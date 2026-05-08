@@ -1,0 +1,148 @@
+---
+import Container from './Container.astro';
+import Icon from './Icon.astro';
+import Button from './Button.astro';
+
+interface Props {
+  activeRoute?: string;
+}
+const { activeRoute = 'home' } = Astro.props;
+
+const items = [
+  { key: 'home', label: 'Home', href: '/' },
+  { key: 'about', label: 'About', href: '/about/' },
+  { key: 'products', label: 'Products', href: '/products/' },
+  { key: 'community', label: 'Community', href: '/community/' },
+  { key: 'contact', label: 'Contact', href: '/contact/' },
+];
+---
+<header class="site-header" id="site-header">
+  <Container>
+    <div class="header-bar">
+      <a href="/" class="logo-link">
+        <img src="/assets/logos/chams-text-blue-outline.svg" alt="Cham's" class="logo" />
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <Icon name="menu" size={24} color="var(--chams-blue)" />
+      </button>
+      <nav class="desktop-nav">
+        {items.map(item => (
+          <a href={item.href} class:list={['nav-link', { active: activeRoute === item.key }]}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div class="header-actions">
+        <a href="tel:0266214488" class="phone-link">
+          <Icon name="phone" size={14} /> 02 6621 4488
+        </a>
+        <Button kind="red" href="/contact/" style="padding: 10px 16px; font-size: 12px;">Wholesale</Button>
+      </div>
+    </div>
+  </Container>
+  <nav class="mobile-nav" id="mobile-nav">
+    {items.map(item => (
+      <a href={item.href} class:list={['nav-link', { active: activeRoute === item.key }]}>
+        {item.label}
+      </a>
+    ))}
+    <Button kind="red" href="/contact/" style="margin-top: 8px; align-self: flex-start;">Wholesale</Button>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--chams-cream);
+    border-bottom: 1px solid var(--chams-tan);
+  }
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    gap: 24px;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .logo {
+    height: 44px;
+  }
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .desktop-nav {
+    display: flex;
+    gap: 28px;
+  }
+  .nav-link {
+    font-family: var(--font-subhead);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-blue);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link.active {
+    color: var(--chams-red);
+    border-bottom-color: var(--chams-red);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .phone-link {
+    font-family: var(--font-subhead);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--chams-stone);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mobile-nav {
+    display: none;
+    background: var(--chams-cream);
+    border-top: 1px solid var(--chams-tan);
+    padding: 16px 32px 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobile-nav .nav-link {
+    font-size: 16px;
+  }
+  .mobile-nav.open {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    .logo { height: 36px; }
+    .menu-toggle { display: block; }
+    .desktop-nav { display: none; }
+    .header-actions { display: none; }
+  }
+</style>

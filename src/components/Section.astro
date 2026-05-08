@@ -1,0 +1,26 @@
+---
+interface Props {
+  bg?: 'cream' | 'bone' | 'blue' | 'red' | 'cream-deep';
+  style?: string;
+}
+const { bg = 'cream', style } = Astro.props;
+---
+<section class:list={['section', `bg-${bg}`]} style={style}>
+  <slot />
+</section>
+
+<style>
+  .section {
+    padding: 80px 0;
+  }
+  .bg-cream { background: var(--chams-cream); color: var(--chams-ink); }
+  .bg-bone { background: var(--chams-bone); color: var(--chams-ink); }
+  .bg-blue { background: var(--chams-blue); color: var(--chams-cream); }
+  .bg-red { background: var(--chams-red); color: var(--chams-cream); }
+  .bg-cream-deep { background: var(--chams-cream-deep); color: var(--chams-ink); }
+  @media (max-width: 768px) {
+    .section {
+      padding: 48px 0;
+    }
+  }
+</style>

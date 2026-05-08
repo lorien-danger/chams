@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import ImageBlock from '../components/ImageBlock.astro';
+---
+<Base
+  title="Contact — Cham's Small Meats & Preservatives"
+  description="Get in touch with Cham's. Office hours Monday to Friday, 7am to 4pm. Wholesale and hospitality enquiries welcome."
+  image="/assets/photos/chams_factory_front_van.png"
+  activeRoute="contact"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 32px;">
+      <Container>
+        <div class="contact-intro">
+          <Eyebrow>Get in Touch</Eyebrow>
+          <h1 class="contact-title">Contact Cham's</h1>
+          <p class="contact-lede">
+            Office hours are Monday to Friday, 7am to 4pm. For wholesale enquiries, please use the form below or call directly.
+          </p>
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="cream" style="padding-top: 32px; padding-bottom: 96px;">
+      <Container>
+        <div class="contact-grid">
+          <div>
+            <ImageBlock label="cham's facility · industrial drive" ratio="4/3" tone="factory" src="/assets/photos/chams_factory_front_van.png" />
+            <div class="contact-card">
+              <Eyebrow>Visit / Contact</Eyebrow>
+              <h3 class="contact-card-title">Cham's Office &amp; Factory</h3>
+              <div class="contact-row">
+                <Icon name="pin" size={16} color="var(--chams-blue)" style="margin-top: 2px;" />
+                <div class="contact-row-label">Address</div>
+                <div class="contact-row-value">12 Industrial Drive<br />Lismore NSW 2480<br />Australia</div>
+              </div>
+              <div class="contact-row">
+                <Icon name="phone" size={16} color="var(--chams-blue)" style="margin-top: 2px;" />
+                <div class="contact-row-label">Phone</div>
+                <div class="contact-row-value">02 6621 4488</div>
+              </div>
+              <div class="contact-row">
+                <Icon name="mail" size={16} color="var(--chams-blue)" style="margin-top: 2px;" />
+                <div class="contact-row-label">Email</div>
+                <div class="contact-row-value">office@chams.com.au</div>
+              </div>
+              <div class="contact-row">
+                <Icon name="clock" size={16} color="var(--chams-blue)" style="margin-top: 2px;" />
+                <div class="contact-row-label">Hours</div>
+                <div class="contact-row-value">Mon–Fri &middot; 7am – 4pm<br />Closed weekends &amp; public holidays</div>
+              </div>
+              <div class="contact-row">
+                <Icon name="truck" size={16} color="var(--chams-blue)" style="margin-top: 2px;" />
+                <div class="contact-row-label">Wholesale</div>
+                <div class="contact-row-value">trade@chams.com.au<br />02 6621 4499</div>
+              </div>
+              <div class="contact-abn">ABN 38 614 720 991 &middot; Cham's Small Meats &amp; Preservatives Pty Ltd</div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <Eyebrow>General &amp; Wholesale Enquiries</Eyebrow>
+            <h3 class="form-title">Send a Message</h3>
+            <p class="form-note">
+              We respond to all enquiries within two business days. For urgent wholesale matters please call directly on 02 6621 4499.
+            </p>
+
+            <div id="form-success" class="form-success" style="display: none;">
+              <Eyebrow color="var(--chams-success)">Message Received</Eyebrow>
+              <p class="success-text">Thanks. The office will be in touch within two business days.</p>
+            </div>
+
+            <form id="contact-form">
+              <div class="form-grid">
+                <label class="field">
+                  <span class="field-label">First name</span>
+                  <input type="text" class="field-input" />
+                </label>
+                <label class="field">
+                  <span class="field-label">Last name</span>
+                  <input type="text" class="field-input" />
+                </label>
+                <label class="field span-2">
+                  <span class="field-label">Business name</span>
+                  <input type="text" class="field-input" />
+                </label>
+                <label class="field">
+                  <span class="field-label">Email</span>
+                  <input type="email" class="field-input" />
+                </label>
+                <label class="field">
+                  <span class="field-label">Phone</span>
+                  <input type="tel" class="field-input" />
+                </label>
+                <label class="field span-2">
+                  <span class="field-label">Enquiry type</span>
+                  <select class="field-input">
+                    <option>General</option>
+                    <option>Wholesale</option>
+                    <option>Hospitality</option>
+                    <option>Media / Press</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+                <label class="field span-2">
+                  <span class="field-label">Message</span>
+                  <textarea class="field-input field-textarea" rows="4"></textarea>
+                </label>
+              </div>
+              <div class="form-footer">
+                <span class="form-privacy">We don't share details with third parties.</span>
+                <Button kind="primary">Send Enquiry <Icon name="arrowRight" size={14} /></Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  });
+</script>
+
+<style>
+  .contact-intro { max-width: 760px; }
+  .contact-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 0.96;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 16px 0 20px;
+    letter-spacing: -0.005em;
+  }
+  .contact-lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--chams-stone);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .contact-card {
+    background: var(--chams-bone);
+    border: 1px solid var(--chams-tan);
+    border-radius: 4px;
+    padding: 28px;
+    margin-top: 24px;
+  }
+  .contact-card-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 10px 0 16px;
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 20px 90px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 10px 0;
+    border-top: 1px solid var(--chams-tan);
+  }
+  .contact-row-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-stone);
+    margin-top: 2px;
+  }
+  .contact-row-value {
+    font-size: 14px;
+    color: var(--chams-blue-ink);
+    line-height: 1.5;
+  }
+  .contact-abn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-grain);
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--chams-tan);
+  }
+  .form-card {
+    background: var(--chams-bone);
+    border: 1px solid var(--chams-tan);
+    border-radius: 4px;
+    padding: 36px;
+  }
+  .form-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 8px 0 6px;
+  }
+  .form-note {
+    font-size: 14px;
+    color: var(--chams-stone);
+    margin-bottom: 24px;
+  }
+  .form-success {
+    background: rgba(79,107,58,.12);
+    border: 2px solid var(--chams-success);
+    border-radius: 4px;
+    padding: 22px;
+  }
+  .success-text {
+    font-size: 16px;
+    color: var(--chams-blue-ink);
+    margin: 10px 0 0;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .span-2 { grid-column: span 2; }
+  .field { display: block; }
+  .field-label {
+    display: block;
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-blue);
+    margin-bottom: 6px;
+  }
+  .field-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--chams-paper);
+    border: 1px solid var(--chams-tan);
+    border-radius: 2px;
+    padding: 11px 12px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--chams-ink);
+    outline: 0;
+  }
+  .field-input:focus {
+    border: 2px solid var(--chams-blue);
+    padding: 10px 11px;
+  }
+  .field-textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  select.field-input {
+    appearance: none;
+  }
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .form-privacy {
+    font-size: 12px;
+    color: var(--chams-grain);
+  }
+
+  @media (max-width: 768px) {
+    .contact-title { font-size: 52px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

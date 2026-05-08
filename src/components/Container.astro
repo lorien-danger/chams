@@ -1,0 +1,26 @@
+---
+interface Props {
+  wide?: boolean;
+  style?: string;
+}
+const { wide, style } = Astro.props;
+---
+<div class:list={['container', { wide }]} style={style}>
+  <slot />
+</div>
+
+<style>
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .container.wide {
+    max-width: 1280px;
+  }
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 16px;
+    }
+  }
+</style>

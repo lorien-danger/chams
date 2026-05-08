@@ -1,0 +1,20 @@
+---
+interface Props {
+  color?: string;
+}
+const { color } = Astro.props;
+---
+<div class="eyebrow" style={color ? `color: ${color}` : undefined}>
+  <slot />
+</div>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-red);
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Button from '../../components/Button.astro';
+import ImageBlock from '../../components/ImageBlock.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { PRODUCTS } from '../../products.js';
+
+const cats = ['All', 'Salami & Soppressa', 'Cured Cuts', 'Preservatives'];
+---
+<Base
+  title="Products — Cham's Small Meats & Preservatives"
+  description="Nine products across three categories: salami & soppressa, cured cuts, and preservatives. All manufactured at our Lismore facility."
+  image="/assets/photos/factory_shelves.png"
+  activeRoute="products"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 32px;">
+      <Container>
+        <div class="products-intro">
+          <div>
+            <Eyebrow>Our Range</Eyebrow>
+            <h1 class="products-title">Products</h1>
+            <p class="products-lede">
+              Eleven products across three categories, all manufactured at our Lismore facility. All retail packs are food-safe vacuum-sealed; bulk hospitality formats available on request.
+            </p>
+          </div>
+          <ImageBlock label="finished goods · cold store" ratio="4/3" tone="product" src="/assets/photos/factory_shelves.png" />
+        </div>
+        <div class="filter-bar">
+          {cats.map(c => (
+            <button class:list={['filter-btn', { active: c === 'All' }]} data-filter={c}>
+              {c}
+            </button>
+          ))}
+          <div style="flex: 1;"></div>
+          <span class="product-count" id="product-count">{PRODUCTS.length} products</span>
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="cream" style="padding-top: 32px; padding-bottom: 96px;">
+      <Container>
+        <div class="product-grid" id="product-grid">
+          {PRODUCTS.map(p => (
+            <div data-cat={p.cat}>
+              <ProductCard name={p.name} sub={p.sub} weight={p.weight} tone="product" batch={p.batch} image={p.image} href={`/products/${p.slug}/`} />
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+
+    <Section bg="red" style="padding-top: 64px; padding-bottom: 64px;">
+      <Container>
+        <div class="trade-strip">
+          <div>
+            <Eyebrow color="rgba(242,231,203,.85)">Hospitality &amp; Wholesale</Eyebrow>
+            <h2 class="trade-title">Bulk formats and trade pricing on every product.</h2>
+          </div>
+          <Button kind="outline-cream" href="/contact/">Request a Trade Pack</Button>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('#product-grid > [data-cat]');
+  const countEl = document.getElementById('product-count');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      let count = 0;
+      items.forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        const show = filter === 'All' || cat === filter;
+        (item as HTMLElement).style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      if (countEl) countEl.textContent = `${count} products`;
+    });
+  });
+</script>
+
+<style>
+  .products-intro {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+  .products-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 0.96;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 16px 0 20px;
+    letter-spacing: -0.005em;
+  }
+  .products-lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--chams-stone);
+  }
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--chams-tan);
+  }
+  .filter-btn {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--chams-tan);
+    background: transparent;
+    color: var(--chams-blue);
+    cursor: pointer;
+  }
+  .filter-btn.active {
+    border-color: var(--chams-blue);
+    background: var(--chams-blue);
+    color: var(--chams-cream);
+  }
+  .product-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--chams-grain);
+    align-self: center;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .trade-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .trade-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 44px;
+    text-transform: uppercase;
+    color: var(--chams-cream);
+    margin: 8px 0 0;
+    line-height: 1.05;
+  }
+
+  @media (max-width: 768px) {
+    .products-intro { grid-template-columns: 1fr; gap: 32px; }
+    .products-title { font-size: 52px; }
+    .product-grid { grid-template-columns: 1fr; }
+  }
+</style>

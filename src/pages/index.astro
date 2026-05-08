@@ -1,0 +1,320 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Button from '../components/Button.astro';
+import InlineLink from '../components/InlineLink.astro';
+import Icon from '../components/Icon.astro';
+import ImageBlock from '../components/ImageBlock.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Badge from '../components/Badge.astro';
+import ScriptLockup from '../components/ScriptLockup.astro';
+---
+<Base
+  title="Cham's Small Meats & Preservatives — Family-Owned Smallgoods, Lismore NSW"
+  description="Traditional cured meats and preservatives made the same way for nearly forty years. Supplying independent retailers and hospitality providers across NSW since 1987."
+  image="/assets/og/default.png"
+  activeRoute="home"
+>
+  <main>
+    <!-- HERO -->
+    <Section bg="cream" style="padding-top: 64px; padding-bottom: 96px;">
+      <Container>
+        <div class="hero-grid">
+          <div>
+            <Eyebrow>Family-Owned Smallgoods · Lismore NSW</Eyebrow>
+            <h1 class="hero-title">
+              Honest<br/>Ingredients.<br/>
+              <span class="text-red">Time-Honoured</span><br/>
+              Methods.
+            </h1>
+            <p class="hero-lede">
+              Cham's Small Meats &amp; Preservatives has been producing traditional cured meats for the Australian market since 1987. Made the same way for nearly forty years, supplied to independent retailers and hospitality providers across NSW.
+            </p>
+            <div class="hero-actions">
+              <Button kind="primary" href="/products/">View Our Range <Icon name="arrowRight" size={14} /></Button>
+              <Button kind="outline" href="/about/">Our Story</Button>
+            </div>
+            <div class="hero-badges">
+              <Badge kind="red">EST · 1987</Badge>
+              <Badge kind="outline">HACCP Certified</Badge>
+            </div>
+          </div>
+          <div>
+            <ImageBlock label="curing room · house no.2" ratio="4/5" tone="curing" src="/assets/photos/cham_portrait.png" objectPosition="center top" />
+            <div class="hero-caption">
+              <ScriptLockup name="we-do-it-properly" height={42} />
+              <div class="hero-caption-text">— Cham Bellanova, Founder</div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- FEATURED PRODUCTS -->
+    <Section bg="bone" style="padding-top: 88px; padding-bottom: 88px;">
+      <Container>
+        <div class="featured-header">
+          <SectionHead eyebrow="Vol. 02 · Our Range" title="Featured Products" lede="Six varieties of salami and soppressa, plus traditional cured cuts and select preservatives. Available in retail packs and bulk for hospitality." />
+          <InlineLink href="/products/">See all 11 products →</InlineLink>
+        </div>
+        <div class="product-grid">
+          <ProductCard name="Hot Soppressa" sub="Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style." weight="250 g" tone="product" batch="HS-26-04" image="/assets/photos/products/hot_soppressa.png" href="/products/hot-soppressa/" />
+          <ProductCard name="Mild Soppressa" sub="The classic Calabrian recipe, made without heat. Slow-cured for ten weeks." weight="250 g" tone="product" batch="MS-26-04" image="/assets/photos/products/mild_soppressa.png" href="/products/mild-soppressa/" />
+          <ProductCard name="Cacciatore" sub="Hunter-style salami, sized to fit a back pocket. Sold in packs of four." weight="4 × 80 g" tone="product" batch="CC-26-04" image="/assets/photos/products/cacciatore.png" href="/products/cacciatore/" />
+        </div>
+      </Container>
+    </Section>
+
+    <!-- BLUE BAND -->
+    <Section bg="blue" style="padding-top: 96px; padding-bottom: 96px;">
+      <Container>
+        <div class="values-grid">
+          <ImageBlock label="processing facility · lismore" ratio="4/3" tone="factory" src="/assets/photos/processing_facility.png" />
+          <div>
+            <SectionHead eyebrow="Vol. 03 · The Cham's Way" title="Same Recipes. Same Standards. Forty Years On." color="cream" />
+            <p class="values-lede">
+              Every batch we produce begins with Cham's father's recipes, brought from southern Italy in 1983. Forty years on, the only things that have changed are the size of the building and the number of hands. The meat, the curing, the time it takes — all the same.
+            </p>
+            <div class="values-pillars">
+              <div class="values-pillar">
+                <div class="pillar-title">Honest.</div>
+                <p class="pillar-text">Ingredients sourced from Australian producers we've worked with for decades.</p>
+              </div>
+              <div class="values-pillar">
+                <div class="pillar-title">Time-Honoured.</div>
+                <p class="pillar-text">Naturally cured, never rushed. Some batches take twelve weeks.</p>
+              </div>
+              <div class="values-pillar">
+                <div class="pillar-title">Properly.</div>
+                <p class="pillar-text">Specifications, batch numbers, and a phone number that rings.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- WHOLESALE STRIP -->
+    <Section bg="cream" style="padding-top: 80px; padding-bottom: 96px;">
+      <Container>
+        <div class="wholesale-grid">
+          <div>
+            <Eyebrow>For Trade · Wholesale &amp; Hospitality</Eyebrow>
+            <h2 class="wholesale-title">
+              Stocked in independent grocers, delis &amp; restaurants across NSW.
+            </h2>
+            <p class="wholesale-lede">
+              We supply independent retailers, butchers, delicatessens, and hospitality providers in retail packs and food-service bulk. Minimum order quantities apply. Standard delivery weekly across the Lismore–Byron–Tweed catchment; cold-chain freight statewide.
+            </p>
+            <div class="wholesale-actions">
+              <Button kind="red" href="/contact/">Wholesale Enquiries</Button>
+              <Button kind="outline" href="#">Download Specs (PDF)</Button>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Cham's has supplied our deli for fourteen years. Consistent product, consistent batch sizes, never a missed delivery. We don't need to think about it."
+            </p>
+            <div class="testimonial-footer">
+              <div class="testimonial-avatar">JP</div>
+              <div>
+                <div class="testimonial-name">Joseph Pellegrini</div>
+                <div class="testimonial-role">Pellegrini's Continental, Newcastle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .text-red { color: var(--chams-red); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.94;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 16px 0 28px;
+  }
+  .hero-lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--chams-stone);
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--chams-tan);
+  }
+  .hero-caption {
+    background: var(--chams-cream);
+    padding: 18px 22px;
+    border: 1px solid var(--chams-tan);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-caption-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-stone);
+    letter-spacing: 0.04em;
+  }
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    gap: 24px;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .values-lede {
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(242,231,203,.85);
+    margin-top: 22px;
+    max-width: 520px;
+  }
+  .values-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .values-pillar {
+    border-top: 2px solid var(--chams-cream);
+    padding-top: 14px;
+  }
+  .pillar-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--chams-cream);
+    line-height: 1;
+  }
+  .pillar-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(242,231,203,.78);
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+  .wholesale-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .wholesale-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 12px 0 18px;
+  }
+  .wholesale-lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--chams-stone);
+    max-width: 540px;
+    margin-bottom: 24px;
+  }
+  .wholesale-actions {
+    display: flex;
+    gap: 14px;
+  }
+  .testimonial-card {
+    background: var(--chams-bone);
+    border: 1px solid var(--chams-tan);
+    border-radius: 4px;
+    padding: 28px;
+  }
+  .testimonial-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--chams-blue-ink);
+    margin: 0 0 18px;
+  }
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--chams-tan);
+  }
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: var(--chams-blue);
+    color: var(--chams-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+  .testimonial-name {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+  }
+  .testimonial-role {
+    font-size: 13px;
+    color: var(--chams-stone);
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-title { font-size: 52px; }
+    .product-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; gap: 32px; }
+    .values-pillars { grid-template-columns: 1fr; }
+    .wholesale-grid { grid-template-columns: 1fr; gap: 32px; }
+    .wholesale-title { font-size: 36px; }
+  }
+</style>

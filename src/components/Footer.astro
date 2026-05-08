@@ -1,0 +1,154 @@
+---
+import Container from './Container.astro';
+import Icon from './Icon.astro';
+---
+<footer class="site-footer">
+  <Container>
+    <div class="footer-grid">
+      <div>
+        <img src="/assets/logos/chams-text-blue-outline.svg" alt="Cham's" class="footer-logo" />
+        <p class="footer-desc">
+          Family-owned smallgoods manufacturer based in Lismore, Northern NSW. Supplying independent retailers and hospitality across Australia since 1987.
+        </p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Visit</div>
+        <div class="footer-addr"><Icon name="pin" size={14} /> 12 Industrial Drive<br /><span style="padding-left: 22px; display: inline-block;">Lismore NSW 2480</span></div>
+        <div class="footer-addr"><Icon name="phone" size={14} /> 02 6621 4488</div>
+        <div class="footer-addr"><Icon name="mail" size={14} /> office@chams.com.au</div>
+        <div class="footer-addr"><Icon name="clock" size={14} /> Mon–Fri · 7am–4pm</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a href="/products/">Products</a>
+          <a href="/community/">Community</a>
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Trade</div>
+        <div class="footer-links">
+          <a href="/contact/">Wholesale enquiries</a>
+          <a href="#">Find a stockist</a>
+          <a href="/products/">Hospitality range</a>
+          <a href="#">Product specs (PDF)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        &copy; Cham's Small Meats &amp; Preservatives Pty Ltd &middot; ABN 38 614 720 991 &middot; Family-Owned Since 1987
+      </div>
+      <div class="footer-sig">
+        <span class="footer-sig-text">— The Bellanova Family</span>
+        <img src="/assets/logos/grazie-mate-script.svg" alt="Grazie Mate" class="footer-sig-img" />
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--chams-blue);
+    color: var(--chams-cream);
+    padding-top: 64px;
+    padding-bottom: 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .footer-logo {
+    height: 60px;
+    filter: brightness(0) invert(.95) sepia(.3) saturate(.4) hue-rotate(350deg);
+  }
+  .footer-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(242,231,203,.78);
+    margin-top: 18px;
+    max-width: 320px;
+  }
+  .footer-col-title {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-cream);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(242,231,203,.25);
+    margin-bottom: 12px;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-addr {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(242,231,203,.85);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-links a {
+    display: block;
+    color: rgba(242,231,203,.85);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 14px;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(242,231,203,.18);
+    margin-top: 56px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-legal {
+    font-family: var(--font-subhead);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,231,203,.6);
+  }
+  .footer-sig {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer-sig-text {
+    font-family: var(--font-subhead);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,231,203,.55);
+  }
+  .footer-sig-img {
+    height: 40px;
+    filter: brightness(0) invert(.95) sepia(.3) saturate(.4) hue-rotate(350deg);
+  }
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

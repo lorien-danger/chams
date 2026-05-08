@@ -1,0 +1,98 @@
+---
+import ImageBlock from './ImageBlock.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  name: string;
+  sub: string;
+  weight: string;
+  tone?: string;
+  batch: string;
+  image?: string;
+  href: string;
+}
+const { name, sub, weight, tone, batch, image, href } = Astro.props;
+---
+<a href={href} class="product-card">
+  <ImageBlock label={name.toLowerCase()} ratio="1/1" tone={tone || 'product'} src={image} objectFit="contain" />
+  <div class="card-body">
+    <div class="card-header">
+      <h3 class="card-name">{name}</h3>
+      <span class="card-weight">{weight}</span>
+    </div>
+    <p class="card-sub">{sub}</p>
+    <div class="card-footer">
+      <span class="card-batch">Batch &middot; {batch}</span>
+      <span class="card-link">Detail <Icon name="arrowRight" size={12} /></span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--chams-bone);
+    border: 1px solid var(--chams-tan);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 0 0 rgba(26,20,16,.06), 0 8px 24px -12px rgba(26,20,16,.18);
+  }
+  .card-body {
+    padding: 16px 18px 18px;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .card-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--chams-blue-ink);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .card-weight {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-grain);
+  }
+  .card-sub {
+    font-size: 14px;
+    color: var(--chams-stone);
+    margin: 6px 0 12px;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--chams-tan);
+    padding-top: 10px;
+  }
+  .card-batch {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-stone);
+  }
+  .card-link {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>

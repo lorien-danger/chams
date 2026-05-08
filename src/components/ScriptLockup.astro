@@ -1,0 +1,16 @@
+---
+interface Props {
+  name: 'we-do-it-properly' | 'grazie-mate';
+  height?: number;
+  color?: string;
+}
+const { name, height = 48, color } = Astro.props;
+const map: Record<string, string> = {
+  'we-do-it-properly': '/assets/logos/we-do-it-properly-script.svg',
+  'grazie-mate': '/assets/logos/grazie-mate-script.svg',
+};
+const filter = color === 'cream'
+  ? 'brightness(0) invert(.95) sepia(.3) saturate(.4) hue-rotate(350deg)'
+  : 'none';
+---
+<img src={map[name]} style={`height: ${height}px; filter: ${filter};`} alt="" />

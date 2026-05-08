@@ -1,0 +1,25 @@
+---
+interface Props {
+  kind?: 'red' | 'blue' | 'olive' | 'outline';
+}
+const { kind = 'red' } = Astro.props;
+---
+<span class:list={['badge', `badge-${kind}`]}>
+  <slot />
+</span>
+
+<style>
+  .badge {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .badge-red { background: var(--chams-red); color: var(--chams-cream); }
+  .badge-blue { background: var(--chams-blue); color: var(--chams-cream); }
+  .badge-olive { background: var(--chams-success); color: var(--chams-cream); }
+  .badge-outline { background: transparent; color: var(--chams-blue); border: 2px solid var(--chams-blue); }
+</style>

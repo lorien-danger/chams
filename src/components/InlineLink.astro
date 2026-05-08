@@ -1,0 +1,24 @@
+---
+interface Props {
+  href?: string;
+  color?: string;
+}
+const { href = '#', color } = Astro.props;
+---
+<a href={href} class="inline-link" style={color ? `color: ${color}; border-color: ${color};` : undefined}>
+  <slot />
+</a>
+
+<style>
+  .inline-link {
+    color: var(--chams-red);
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid var(--chams-red);
+    padding-bottom: 2px;
+  }
+</style>

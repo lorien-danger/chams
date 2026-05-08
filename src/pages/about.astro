@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ImageBlock from '../components/ImageBlock.astro';
+import ScriptLockup from '../components/ScriptLockup.astro';
+
+const milestones = [
+  { year: '1983', body: 'Cham Bellanova arrives in Australia from southern Italy with his father\'s recipes.' },
+  { year: '1985', body: 'Begins making salami in his garage in Goonellabah for neighbours.' },
+  { year: '1987', body: 'Cham\'s Small Meats & Preservatives Pty Ltd is founded.' },
+  { year: '1994', body: 'Moves into the first dedicated facility on Industrial Drive, Lismore.' },
+  { year: '2003', body: 'Son Marco Bellanova joins production.' },
+  { year: '2011', body: 'Daughter Lucia Bellanova takes on operations and trade.' },
+  { year: '2018', body: 'Facility expansion — second curing house commissioned.' },
+  { year: '2024', body: '60 staff. Supplying 320+ stockists across NSW & QLD.' },
+];
+---
+<Base
+  title="Our Story — Cham's Small Meats & Preservatives"
+  description="Founded in a Goonellabah garage in 1985, Cham's has grown into a 60-staff facility in Lismore. Family-owned, same recipes, forty years on."
+  image="/assets/photos/processing_close_up.png"
+  activeRoute="about"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 64px;">
+      <Container>
+        <div class="about-intro">
+          <Eyebrow>Our Story</Eyebrow>
+          <h1 class="about-title">Family-Owned. Northern NSW. Since 1987.</h1>
+          <p class="about-lede">
+            Cham's was founded in a Goonellabah garage in 1985 and incorporated as a smallgoods manufacturer in 1987. Today the company runs a 60-staff processing facility in Lismore and supplies independent retailers and hospitality providers throughout New South Wales.
+          </p>
+        </div>
+        <div style="margin-top: 48px;">
+          <ImageBlock label="processing floor · lismore" ratio="16/9" tone="factory" src="/assets/photos/processing_close_up.png" />
+        </div>
+      </Container>
+    </Section>
+
+    <!-- FOUNDER STATEMENT -->
+    <Section bg="bone" style="padding-top: 80px; padding-bottom: 80px;">
+      <Container>
+        <div class="founder-grid">
+          <div>
+            <ImageBlock label="cham bellanova · 2024" ratio="4/5" tone="portrait" src="/assets/photos/cham_portrait.png" />
+            <div class="founder-photo-caption">Photographed in the original curing house, May 2024.</div>
+          </div>
+          <div>
+            <Eyebrow>A Word from the Founder</Eyebrow>
+            <h2 class="founder-title">In Cham's Own Words.</h2>
+            <div class="founder-quote">
+              <p>"When I come to Australia in 1983 I didn't know nobody. I had my father's recipes and I had two hands. I start making salami in my garage for the neighbours. They say <em>Cham, this is good, you should sell this</em>. So I sell it.</p>
+              <p>Forty year later we still make everything the same way. Good meat, proper curing, no shortcut. My son work with me now. My daughter do the office. She tell me I need website, I need social media. I say OK, but the salami is the same.</p>
+              <p>People ask me why I don't change the name. Small Meats &amp; Preservatives, they say it sound old fashioned. I say, that's what we make. Why I'm going to call it something else.</p>
+              <p>We do it properly. That's it. That's the whole business."</p>
+            </div>
+            <div class="founder-sig">
+              <ScriptLockup name="grazie-mate" height={56} />
+              <div class="founder-sig-text">— Cham Bellanova, Founder</div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- FAMILY HERITAGE -->
+    <Section bg="cream" style="padding-top: 0; padding-bottom: 0;">
+      <Container>
+        <div class="heritage-frame">
+          <img src="/assets/photos/cham_family_heritage.png" alt="The Bellanova family, southern Italy, before emigration" class="heritage-img" />
+        </div>
+      </Container>
+      <Container>
+        <div class="heritage-caption">
+          <div class="heritage-fig">
+            Fig. 01<br/>The Bellanova family,<br/>southern Italy, c.1962.
+          </div>
+          <p class="heritage-text">
+            Cham (highlighted, front) with his parents, grandparents, aunts, uncles and cousins outside the family home in Calabria. The recipes the company makes today were the recipes the family ate every weekend.
+          </p>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- TIMELINE -->
+    <Section bg="cream">
+      <Container>
+        <SectionHead eyebrow="Vol. 04 · Forty Years" title="A Brief Timeline" />
+        <div class="timeline-grid">
+          {milestones.map(m => (
+            <div class="timeline-item">
+              <div class="timeline-year">{m.year}</div>
+              <p class="timeline-body">{m.body}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+
+    <!-- VALUES BAND -->
+    <Section bg="blue" style="padding-top: 88px; padding-bottom: 88px;">
+      <Container>
+        <SectionHead eyebrow="Our Values" title="Honest Ingredients. Time-Honoured Methods." color="cream" />
+        <div class="about-values-grid">
+          {[
+            { n: '01', t: 'Australian Ingredients', d: 'Pork sourced from accredited Australian farms. Salt from Pyramid Salt in northern Victoria. No imported fillers.' },
+            { n: '02', t: 'Naturally Cured', d: 'Slow, cool curing at controlled humidity. No accelerants. Some products take twelve weeks before they leave the curing house.' },
+            { n: '03', t: 'Family Operated', d: 'Cham still runs production. His son Marco is on the floor. His daughter Lucia runs operations. We answer the phone.' },
+          ].map(v => (
+            <div>
+              <div class="value-num">— {v.n}</div>
+              <h3 class="value-title">{v.t}</h3>
+              <p class="value-desc">{v.d}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .about-intro { max-width: 820px; }
+  .about-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 0.96;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 16px 0 20px;
+    letter-spacing: -0.005em;
+  }
+  .about-lede {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--chams-stone);
+    max-width: 680px;
+  }
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .founder-photo-caption {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-grain);
+    margin-top: 10px;
+  }
+  .founder-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 12px 0 24px;
+  }
+  .founder-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--chams-blue-ink);
+  }
+  .founder-sig {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .founder-sig-text {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--chams-stone);
+  }
+  .heritage-frame {
+    border-top: 1px solid var(--chams-tan);
+    border-bottom: 1px solid var(--chams-tan);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .heritage-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: sepia(0.05);
+  }
+  .heritage-caption {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    padding-top: 22px;
+    padding-bottom: 60px;
+    align-items: start;
+  }
+  .heritage-fig {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chams-grain);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+  .heritage-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--chams-stone);
+    margin: 0;
+    max-width: 720px;
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .timeline-item {
+    border-top: 3px solid var(--chams-red);
+    padding-top: 14px;
+  }
+  .timeline-year {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--chams-blue-ink);
+  }
+  .timeline-body {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--chams-stone);
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .value-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(242,231,203,.55);
+    letter-spacing: 0.1em;
+  }
+  .value-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: var(--chams-cream);
+    line-height: 1.05;
+    margin: 10px 0 12px;
+  }
+  .value-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(242,231,203,.78);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .about-title { font-size: 44px; }
+    .founder-grid { grid-template-columns: 1fr; gap: 32px; }
+    .heritage-caption { grid-template-columns: 1fr; gap: 16px; }
+    .timeline-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .about-values-grid { grid-template-columns: 1fr; }
+  }
+</style>

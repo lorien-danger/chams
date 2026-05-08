@@ -1,0 +1,220 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Button from '../../components/Button.astro';
+import InlineLink from '../../components/InlineLink.astro';
+import Icon from '../../components/Icon.astro';
+import ImageBlock from '../../components/ImageBlock.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import Badge from '../../components/Badge.astro';
+import { PRODUCTS } from '../../products.js';
+
+export function getStaticPaths() {
+  return PRODUCTS.map(p => ({
+    params: { slug: p.slug },
+    props: { product: p },
+  }));
+}
+
+const { product } = Astro.props;
+const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
+---
+<Base
+  title={`${product.name} — Cham's Small Meats & Preservatives`}
+  description={product.sub}
+  image={`/assets/og/product-${product.slug}.png`}
+  activeRoute="products"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 32px; padding-bottom: 0;">
+      <Container>
+        <a href="/products/" class="back-link">
+          <span class="back-arrow"><Icon name="arrowRight" size={12} /></span>
+          Back to Products
+        </a>
+      </Container>
+    </Section>
+
+    <Section bg="cream" style="padding-top: 24px; padding-bottom: 80px;">
+      <Container>
+        <div class="detail-grid">
+          <div class="detail-image">
+            <ImageBlock label={product.name.toLowerCase()} ratio="1/1" tone="product" src={product.image} objectFit="contain" style="border-radius: 8px;" />
+          </div>
+          <div>
+            <Eyebrow>{product.cat}</Eyebrow>
+            <h1 class="detail-title">{product.name}</h1>
+            <div class="detail-meta">
+              <Badge kind="blue">{product.weight}</Badge>
+              <span class="detail-batch">Batch &middot; {product.batch}</span>
+            </div>
+            <p class="detail-desc">{product.description}</p>
+
+            <div class="detail-rows">
+              <div class="detail-row">
+                <div class="detail-label">Ingredients</div>
+                <div class="detail-value">{product.ingredients}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Curing</div>
+                <div class="detail-value">{product.curing}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Storage</div>
+                <div class="detail-value">{product.storage}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Origin</div>
+                <div class="detail-value">{product.origin}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Available Formats</div>
+                <div class="detail-value">
+                  <ul class="formats-list">
+                    {product.formats.map((f: string) => <li>{f}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-actions">
+              <Button kind="red" href="/contact/">Wholesale Enquiry</Button>
+              <Button kind="outline" href="#">Download Spec Sheet</Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    {related.length > 0 && (
+      <Section bg="bone" style="padding-top: 64px; padding-bottom: 80px;">
+        <Container>
+          <div class="related-header">
+            <SectionHead eyebrow={product.cat} title="More in This Range" />
+            <InlineLink href="/products/">See all products →</InlineLink>
+          </div>
+          <div class="related-grid" style={`grid-template-columns: repeat(${Math.min(related.length, 3)}, 1fr);`}>
+            {related.map(p => <ProductCard name={p.name} sub={p.sub} weight={p.weight} tone="product" batch={p.batch} image={p.image} href={`/products/${p.slug}/`} />)}
+          </div>
+        </Container>
+      </Section>
+    )}
+  </main>
+</Base>
+
+<style>
+  .back-link {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-stone);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .back-arrow {
+    transform: rotate(180deg);
+    display: inline-flex;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .detail-image {
+    position: sticky;
+    top: 100px;
+  }
+  .detail-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 0.96;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 12px 0 8px;
+    letter-spacing: -0.005em;
+  }
+  .detail-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .detail-batch {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--chams-grain);
+  }
+  .detail-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--chams-stone);
+    margin-bottom: 32px;
+  }
+  .detail-rows {
+    display: grid;
+    gap: 0;
+  }
+  .detail-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--chams-tan);
+    align-items: start;
+  }
+  .detail-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-blue);
+    padding-top: 2px;
+  }
+  .detail-value {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--chams-stone);
+  }
+  .formats-list {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .formats-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--chams-stone);
+  }
+  .detail-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    gap: 24px;
+  }
+  .related-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .detail-grid { grid-template-columns: 1fr; gap: 32px; }
+    .detail-image { position: static; }
+    .detail-title { font-size: 44px; }
+    .related-grid { grid-template-columns: 1fr !important; }
+  }
+</style>

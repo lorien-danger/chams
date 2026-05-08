@@ -1,0 +1,57 @@
+---
+interface Props {
+  kind?: 'primary' | 'red' | 'outline' | 'outline-cream';
+  href?: string;
+  style?: string;
+  class?: string;
+}
+const { kind = 'primary', href, style, class: className } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+<Tag href={href} class:list={[`btn btn-${kind}`, className]} style={style}>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 4px;
+    padding: 14px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 120ms ease, background 160ms ease, box-shadow 160ms ease;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--chams-blue);
+    color: var(--chams-cream);
+    box-shadow: 0 2px 0 0 var(--chams-blue-deep);
+  }
+  .btn-red {
+    background: var(--chams-red);
+    color: var(--chams-cream);
+    box-shadow: 0 2px 0 0 var(--chams-red-deep);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--chams-blue);
+    border: 2px solid var(--chams-blue);
+    padding: 12px 20px;
+  }
+  .btn-outline-cream {
+    background: transparent;
+    color: var(--chams-cream);
+    border: 2px solid var(--chams-cream);
+    padding: 12px 20px;
+  }
+</style>
