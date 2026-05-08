@@ -308,8 +308,11 @@ import ScriptLockup from '../components/ScriptLockup.astro';
     color: var(--chams-stone);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-title { font-size: 64px; }
+  }
+  @media (max-width: 768px) {
     .hero-title { font-size: 52px; }
     .product-grid { grid-template-columns: 1fr; }
     .values-grid { grid-template-columns: 1fr; gap: 32px; }
