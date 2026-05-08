@@ -162,7 +162,7 @@ function InlineLink({ children, href, onClick, color }) {
 // All photography in the kit is placeholder. We render warm, slightly
 // labelled rectangles so the layouts are evaluable without real assets.
 
-function ImageBlock({ label, ratio, tone, src, objectPosition, style }) {
+function ImageBlock({ label, ratio, tone, src, objectPosition, objectFit, style }) {
   const tones = {
     curing:   "linear-gradient(135deg, #3a2418 0%, #5a2f1d 100%)",
     factory:  "linear-gradient(135deg, #2b3540 0%, #475968 100%)",
@@ -190,7 +190,7 @@ function ImageBlock({ label, ratio, tone, src, objectPosition, style }) {
             inset: 0,
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: objectFit || "cover",
             objectPosition: objectPosition || "center center",
             display: "block",
           }}
@@ -394,7 +394,7 @@ function FooterAddr({ children }) {
 
 /* -------------------- PRODUCT CARD -------------------- */
 
-function ProductCard({ name, sub, weight, tone, batch }) {
+function ProductCard({ name, sub, weight, tone, batch, image }) {
   return (
     <article style={{
       background: "var(--chams-bone)",
@@ -406,7 +406,7 @@ function ProductCard({ name, sub, weight, tone, batch }) {
     }}
       onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 1px 0 0 rgba(26,20,16,.06), 0 8px 24px -12px rgba(26,20,16,.18)"; }}
       onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
-      <ImageBlock label={name.toLowerCase()} ratio="5/4" tone={tone || "product"} />
+      <ImageBlock label={name.toLowerCase()} ratio="1/1" tone={tone || "product"} src={image} objectFit="contain" />
       <div style={{ padding: "16px 18px 18px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
           <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 22, color: "var(--chams-blue-ink)", textTransform: "uppercase", lineHeight: 1.05, margin: 0 }}>{name}</h3>

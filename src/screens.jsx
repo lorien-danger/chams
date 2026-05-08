@@ -58,9 +58,9 @@ function HomeScreen({ setRoute }) {
             <InlineLink onClick={() => setRoute("products")}>See all 11 products →</InlineLink>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3, 1fr)", gap: 24 }}>
-            <ProductCard name="Hot Soppressa" sub="Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style." weight="250 g" tone="product" batch="HS-26-04" />
-            <ProductCard name="Mild Soppressa" sub="The classic Calabrian recipe, made without heat. Slow-cured for ten weeks." weight="250 g" tone="product" batch="MS-26-04" />
-            <ProductCard name="Cacciatore" sub="Hunter-style salami, sized to fit a back pocket. Sold in packs of four." weight="4 × 80 g" tone="product" batch="CC-26-04" />
+            <ProductCard name="Hot Soppressa" sub="Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style." weight="250 g" tone="product" batch="HS-26-04" image="/assets/photos/products/hot_soppressa.png" />
+            <ProductCard name="Mild Soppressa" sub="The classic Calabrian recipe, made without heat. Slow-cured for ten weeks." weight="250 g" tone="product" batch="MS-26-04" image="/assets/photos/products/mild_soppressa.png" />
+            <ProductCard name="Cacciatore" sub="Hunter-style salami, sized to fit a back pocket. Sold in packs of four." weight="4 × 80 g" tone="product" batch="CC-26-04" image="/assets/photos/products/cacciatore.png" />
           </div>
         </Container>
       </Section>
@@ -258,15 +258,15 @@ function AboutScreen({ setRoute }) {
    ============================================================ */
 
 const PRODUCTS = [
-  { cat: "Salami & Soppressa", name: "Hot Soppressa", sub: "Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style.", weight: "250 g", batch: "HS-26-04" },
-  { cat: "Salami & Soppressa", name: "Mild Soppressa", sub: "The classic Calabrian recipe, made without heat. Slow-cured for ten weeks.", weight: "250 g", batch: "MS-26-04" },
-  { cat: "Salami & Soppressa", name: "Traditional Salami", sub: "House-recipe pork salami. Lightly seasoned, finely-grained. Sliced or whole.", weight: "1 kg whole", batch: "TS-26-03" },
-  { cat: "Salami & Soppressa", name: "Cacciatore", sub: "Hunter-style salami in a small format. Sized to fit a back pocket. Pack of four.", weight: "4 × 80 g", batch: "CC-26-04" },
-  { cat: "Cured Cuts", name: "Pepperoni", sub: "Hot, oily, paprika-forward. The pizzeria standard, made the proper way.", weight: "200 g sliced", batch: "PP-26-04" },
-  { cat: "Cured Cuts", name: "Pancetta", sub: "Belly pork, dry-cured for eight weeks. Available rolled or flat.", weight: "500 g", batch: "PA-26-03" },
-  { cat: "Preservatives", name: "Pickled Peppers", sub: "Long red chillies in a brine of vinegar, salt, and bay leaf.", weight: "330 g jar", batch: "PE-26-02" },
-  { cat: "Preservatives", name: "Marinated Artichokes", sub: "Quartered artichoke hearts in olive oil, garlic and parsley.", weight: "280 g jar", batch: "AR-26-02" },
-  { cat: "Preservatives", name: "Giardiniera", sub: "Mixed pickled vegetables — cauliflower, capsicum, carrot, celery.", weight: "500 g jar", batch: "GI-26-02" },
+  { cat: "Salami & Soppressa", name: "Hot Soppressa", sub: "Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style.", weight: "250 g", batch: "HS-26-04", image: "/assets/photos/products/hot_soppressa.png" },
+  { cat: "Salami & Soppressa", name: "Mild Soppressa", sub: "The classic Calabrian recipe, made without heat. Slow-cured for ten weeks.", weight: "250 g", batch: "MS-26-04", image: "/assets/photos/products/mild_soppressa.png" },
+  { cat: "Salami & Soppressa", name: "Traditional Salami", sub: "House-recipe pork salami. Lightly seasoned, finely-grained. Sliced or whole.", weight: "1 kg whole", batch: "TS-26-03", image: "/assets/photos/products/traditional_salami.png" },
+  { cat: "Salami & Soppressa", name: "Cacciatore", sub: "Hunter-style salami in a small format. Sized to fit a back pocket. Pack of four.", weight: "4 × 80 g", batch: "CC-26-04", image: "/assets/photos/products/cacciatore.png" },
+  { cat: "Cured Cuts", name: "Pepperoni", sub: "Hot, oily, paprika-forward. The pizzeria standard, made the proper way.", weight: "200 g sliced", batch: "PP-26-04", image: "/assets/photos/products/pepperoni.png" },
+  { cat: "Cured Cuts", name: "Pancetta", sub: "Belly pork, dry-cured for eight weeks. Available rolled or flat.", weight: "500 g", batch: "PA-26-03", image: "/assets/photos/products/pancetta.png" },
+  { cat: "Preservatives", name: "Pickled Peppers", sub: "Long red chillies in a brine of vinegar, salt, and bay leaf.", weight: "330 g jar", batch: "PE-26-02", image: "/assets/photos/products/pickled_peppers.png" },
+  { cat: "Preservatives", name: "Marinated Artichokes", sub: "Quartered artichoke hearts in olive oil, garlic and parsley.", weight: "280 g jar", batch: "AR-26-02", image: "/assets/photos/products/marinated_artichokes.png" },
+  { cat: "Preservatives", name: "Giardiniera", sub: "Mixed pickled vegetables — cauliflower, capsicum, carrot, celery.", weight: "500 g jar", batch: "GI-26-02", image: "/assets/photos/products/giardiniera.png" },
 ];
 
 function ProductsScreen({ setRoute }) {
