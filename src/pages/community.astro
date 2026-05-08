@@ -26,38 +26,32 @@ import ImageBlock from '../components/ImageBlock.astro';
       </Container>
     </Section>
 
+    <Section bg="bone" style="padding-top: 0; padding-bottom: 0;">
+      <Container>
+        <ImageBlock label="dam kings beach · community day" ratio="21/9" tone="archival" src="/assets/photos/dam_kings_beach_community.png" objectPosition="center 40%" />
+      </Container>
+    </Section>
+
     <Section bg="bone" style="padding-top: 64px; padding-bottom: 80px;">
       <Container>
         <div class="partner-grid">
-          <div class="partner-card">
+          <div>
             <img src="/assets/logos/dam-kings-beach.svg" alt="Dam Kings Beach" style="height: 64px; margin-bottom: 16px;" />
-            <Eyebrow>Community Partner</Eyebrow>
+            <Eyebrow>Community Partner · Since 2019</Eyebrow>
             <h2 class="partner-title">Dam Kings Beach</h2>
             <p class="partner-text">
-              Cham's is proud to support the Dam Kings Beach initiative, a community-led project working to maintain and improve public-access waterways in our region. We provide annual financial support and donate to their seasonal community events.
-            </p>
-            <p class="partner-text">
-              Our partnership reflects our commitment to the Northern Rivers community and to the long-term stewardship of the natural assets that make this part of Australia what it is.
+              Cham's is a founding sponsor of the Dam Kings Beach initiative, a community-led project working to maintain and improve public-access waterways in our region. We provide annual financial support and donate to their seasonal community events.
             </p>
             <a href="https://damkingsbeach.org" target="_blank" rel="noopener noreferrer" class="partner-link">
               damkingsbeach.org <Icon name="arrowRight" size={12} />
             </a>
           </div>
-          <div class="partner-sidebar">
-            <ImageBlock label="dam kings beach · community day" ratio="16/9" tone="archival" src="/assets/photos/dam_kings_beach_community.png" objectPosition="center 40%" />
-            <div class="partner-quote-card">
-              <Eyebrow>From the Founder</Eyebrow>
-              <p class="partner-quote">
-                "We been here forty year. The river, the beach, all this — it's our community. You support the community, the community support you. That's how it works."
-              </p>
-              <div class="partner-attribution">— Cham Bellanova</div>
-            </div>
-            <div class="partner-sponsor-card">
-              <img src="/assets/logos/dam-kings-beach.svg" alt="Dam Kings Beach" style="height: 56px; flex-shrink: 0;" />
-              <div class="partner-sponsor-text">
-                Cham's is a founding sponsor of the Dam Kings Beach initiative. Supporting clean waterways in the Northern Rivers since 2019.
-              </div>
-            </div>
+          <div class="partner-quote-card">
+            <Eyebrow>From the Founder</Eyebrow>
+            <p class="partner-quote">
+              "We been here forty year. The river, the beach, all this — it's our community. You support the community, the community support you. That's how it works."
+            </p>
+            <div class="partner-attribution">— Cham Bellanova</div>
           </div>
         </div>
       </Container>
@@ -88,7 +82,7 @@ import ImageBlock from '../components/ImageBlock.astro';
   .community-title {
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 80px;
+    font-size: 88px;
     line-height: 0.96;
     text-transform: uppercase;
     color: var(--chams-blue-ink);
@@ -99,18 +93,13 @@ import ImageBlock from '../components/ImageBlock.astro';
     font-size: 19px;
     line-height: 1.5;
     color: var(--chams-stone);
+    max-width: 680px;
   }
   .partner-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    align-items: stretch;
-  }
-  .partner-card {
-    background: var(--chams-cream);
-    border: 3px solid var(--chams-blue);
-    border-radius: 4px;
-    padding: 36px;
+    align-items: start;
   }
   .partner-title {
     font-family: var(--font-display);
@@ -122,9 +111,10 @@ import ImageBlock from '../components/ImageBlock.astro';
     line-height: 1;
   }
   .partner-text {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.55;
     color: var(--chams-stone);
+    max-width: 520px;
   }
   .partner-link {
     display: inline-flex;
@@ -140,11 +130,6 @@ import ImageBlock from '../components/ImageBlock.astro';
     border-bottom: 2px solid var(--chams-red);
     padding-bottom: 2px;
     margin-top: 8px;
-  }
-  .partner-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
   }
   .partner-quote-card {
     background: var(--chams-cream);
@@ -168,20 +153,6 @@ import ImageBlock from '../components/ImageBlock.astro';
     text-transform: uppercase;
     color: var(--chams-stone);
     margin-top: 16px;
-  }
-  .partner-sponsor-card {
-    background: var(--chams-cream);
-    border: 1px solid var(--chams-tan);
-    border-radius: 4px;
-    padding: 28px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .partner-sponsor-text {
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--chams-stone);
   }
   .env-grid {
     display: grid;
@@ -210,9 +181,8 @@ import ImageBlock from '../components/ImageBlock.astro';
   }
 
   @media (max-width: 768px) {
-    .community-title { font-size: 44px; }
+    .community-title { font-size: 48px; }
     .partner-grid { grid-template-columns: 1fr; gap: 32px; }
-    .partner-card { padding: 20px; }
     .env-grid { grid-template-columns: 1fr; }
   }
 </style>
