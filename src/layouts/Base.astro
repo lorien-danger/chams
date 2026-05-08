@@ -10,7 +10,9 @@ interface Props {
   activeRoute?: string;
 }
 
+const SITE_URL = 'https://www.chams.com.au';
 const { title, description, image = '/assets/og/default.png', activeRoute = 'home' } = Astro.props;
+const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
 ---
 <!doctype html>
 <html lang="en-AU">
@@ -28,11 +30,11 @@ const { title, description, image = '/assets/og/default.png', activeRoute = 'hom
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Cham's Small Meats & Preservatives" />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={absoluteImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={absoluteImage} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
