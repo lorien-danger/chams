@@ -14,7 +14,7 @@ interface Props {
 const { name, sub, weight, tone, batch, image, href } = Astro.props;
 ---
 <a href={href} class="product-card">
-  <ImageBlock label={name.toLowerCase()} ratio="1/1" tone={tone || 'product'} src={image} objectFit="contain" />
+  <ImageBlock label={name.toLowerCase()} ratio="4/3" tone={tone || 'product'} src={image} objectFit="cover" />
   <div class="card-body">
     <div class="card-header">
       <h3 class="card-name">{name}</h3>

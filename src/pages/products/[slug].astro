@@ -42,7 +42,7 @@ const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product
       <Container>
         <div class="detail-grid">
           <div class="detail-image">
-            <ImageBlock label={product.name.toLowerCase()} ratio="1/1" tone="product" src={product.image} objectFit="contain" style="border-radius: 8px;" />
+            <ImageBlock label={product.name.toLowerCase()} ratio="4/3" tone="product" src={product.image} objectFit="cover" style="border-radius: 8px;" />
           </div>
           <div>
             <Eyebrow>{product.cat}</Eyebrow>
@@ -82,7 +82,7 @@ const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product
 
             <div class="detail-actions">
               <Button kind="red" href="/contact/">Wholesale Enquiry</Button>
-              <Button kind="outline" href="#">Download Spec Sheet</Button>
+              <Button kind="outline" href="/assets/chams-spec-sheet.pdf" target="_blank">Download Spec Sheet</Button>
             </div>
           </div>
         </div>

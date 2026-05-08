@@ -3,7 +3,7 @@ export const PRODUCTS = [
   {
     cat: "Salami & Soppressa", slug: "hot-soppressa", name: "Hot Soppressa",
     sub: "Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style.",
-    weight: "250 g", batch: "HS-26-04", image: "/assets/photos/products/hot_soppressa.png",
+    weight: "1 kg whole", batch: "HS-26-04", image: "/assets/photos/products/hot_soppressa.png",
     description: "Our hot soppressa is made to a traditional southern-Italian recipe passed down from Cham's father. Coarse-cut Australian pork shoulder is blended with cracked fennel seed and dried chilli flakes, then stuffed into natural casings and hung in our curing house for a minimum of eight weeks. The result is a firm, intensely flavoured salami with a slow, building heat that pairs well with aged cheeses and crusty bread.",
     ingredients: "Australian pork (85%), salt, dried chilli flakes, fennel seed, garlic, dextrose, black pepper, starter culture, sodium nitrate.",
     formats: ["250 g retail vacuum pack", "1 kg whole (hospitality)", "Sliced 100 g deli pack"],
@@ -14,7 +14,7 @@ export const PRODUCTS = [
   {
     cat: "Salami & Soppressa", slug: "mild-soppressa", name: "Mild Soppressa",
     sub: "The classic Calabrian recipe, made without heat. Slow-cured for ten weeks.",
-    weight: "250 g", batch: "MS-26-04", image: "/assets/photos/products/mild_soppressa.png",
+    weight: "1 kg whole", batch: "MS-26-04", image: "/assets/photos/products/mild_soppressa.png",
     description: "The mild soppressa is Cham's original recipe and the product that started the business. Made without chilli, it lets the quality of the pork and the depth of the cure speak for themselves. Coarse-ground pork with garlic, black pepper, and a touch of white wine, hung for ten full weeks. This is the salami Cham made in his garage in 1985 — the recipe hasn't changed.",
     ingredients: "Australian pork (87%), salt, black pepper, garlic, white wine, dextrose, starter culture, sodium nitrate.",
     formats: ["250 g retail vacuum pack", "1 kg whole (hospitality)", "Sliced 100 g deli pack"],
@@ -58,7 +58,7 @@ export const PRODUCTS = [
   {
     cat: "Cured Cuts", slug: "pancetta", name: "Pancetta",
     sub: "Belly pork, dry-cured for eight weeks. Available rolled or flat.",
-    weight: "500 g", batch: "PA-26-03", image: "/assets/photos/products/pancetta.png",
+    weight: "200 g", batch: "PA-26-03", image: "/assets/photos/products/pancetta.png",
     description: "Our pancetta is dry-cured pork belly, seasoned with juniper, bay leaf, and black pepper, then hung for eight weeks. Available rolled (arrotolata) for slicing into thin rounds, or flat (stesa) for dicing into lardons. The fat is silky and flavourful — it renders beautifully for pasta, risotto, and any dish where you need a rich, porky base.",
     ingredients: "Australian pork belly (92%), salt, black pepper, juniper berry, bay leaf, garlic, dextrose, sodium nitrate.",
     formats: ["500 g rolled (retail)", "500 g flat (retail)", "2 kg whole slab (hospitality)"],
@@ -69,7 +69,7 @@ export const PRODUCTS = [
   {
     cat: "Preservatives", slug: "pickled-peppers", name: "Pickled Peppers",
     sub: "Long red chillies in a brine of vinegar, salt, and bay leaf.",
-    weight: "330 g jar", batch: "PE-26-02", image: "/assets/photos/products/pickled_peppers.png",
+    weight: "500 g jar", batch: "PE-26-02", image: "/assets/photos/products/pickled_peppers.png",
     description: "Whole long red chillies pickled in a simple brine of white wine vinegar, salt, and bay leaf. Crunchy, tangy, and gently hot — these are the peppers Cham's family served at every meal in Calabria. Excellent alongside cured meats, on sandwiches, or chopped through a pasta sauce for a vinegary kick.",
     ingredients: "Long red chillies, white wine vinegar, water, salt, bay leaf, garlic.",
     formats: ["330 g glass jar (retail)", "2 L catering jar (hospitality)"],
@@ -80,7 +80,7 @@ export const PRODUCTS = [
   {
     cat: "Preservatives", slug: "marinated-artichokes", name: "Marinated Artichokes",
     sub: "Quartered artichoke hearts in olive oil, garlic and parsley.",
-    weight: "280 g jar", batch: "AR-26-02", image: "/assets/photos/products/marinated_artichokes.png",
+    weight: "500 g jar", batch: "AR-26-02", image: "/assets/photos/products/marinated_artichokes.png",
     description: "Quartered artichoke hearts, blanched and marinated in Australian extra-virgin olive oil with garlic, flat-leaf parsley, and a touch of white wine vinegar. Tender, earthy, and rich — ideal for antipasto platters, pizza toppings, or served straight from the jar with good bread. Made in small batches at our Lismore facility.",
     ingredients: "Artichoke hearts (55%), extra-virgin olive oil, white wine vinegar, garlic, flat-leaf parsley, salt, black pepper.",
     formats: ["280 g glass jar (retail)", "2 L catering jar (hospitality)"],

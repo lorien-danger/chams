@@ -25,7 +25,7 @@ const milestones = [
   activeRoute="about"
 >
   <main>
-    <Section bg="cream" style="padding-top: 56px; padding-bottom: 64px;">
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 32px;">
       <Container>
         <div class="about-intro">
           <Eyebrow>Our Story</Eyebrow>
@@ -33,35 +33,6 @@ const milestones = [
           <p class="about-lede">
             Cham's was founded in a Goonellabah garage in 1985 and incorporated as a smallgoods manufacturer in 1987. Today the company runs a 60-staff processing facility in Lismore and supplies independent retailers and hospitality providers throughout New South Wales.
           </p>
-        </div>
-        <div style="margin-top: 48px;">
-          <ImageBlock label="processing floor · lismore" ratio="16/9" tone="factory" src="/assets/photos/processing_close_up.png" />
-        </div>
-      </Container>
-    </Section>
-
-    <!-- FOUNDER STATEMENT -->
-    <Section bg="bone" style="padding-top: 80px; padding-bottom: 80px;">
-      <Container>
-        <div class="founder-grid">
-          <div>
-            <ImageBlock label="cham bellanova · 2024" ratio="4/5" tone="portrait" src="/assets/photos/cham_portrait.png" />
-            <div class="founder-photo-caption">Photographed in the original curing house, May 2024.</div>
-          </div>
-          <div>
-            <Eyebrow>A Word from the Founder</Eyebrow>
-            <h2 class="founder-title">In Cham's Own Words.</h2>
-            <div class="founder-quote">
-              <p>"When I come to Australia in 1983 I didn't know nobody. I had my father's recipes and I had two hands. I start making salami in my garage for the neighbours. They say <em>Cham, this is good, you should sell this</em>. So I sell it.</p>
-              <p>Forty year later we still make everything the same way. Good meat, proper curing, no shortcut. My son work with me now. My daughter do the office. She tell me I need website, I need social media. I say OK, but the salami is the same.</p>
-              <p>People ask me why I don't change the name. Small Meats &amp; Preservatives, they say it sound old fashioned. I say, that's what we make. Why I'm going to call it something else.</p>
-              <p>We do it properly. That's it. That's the whole business."</p>
-            </div>
-            <div class="founder-sig">
-              <ScriptLockup name="grazie-mate" height={56} />
-              <div class="founder-sig-text">— Cham Bellanova, Founder</div>
-            </div>
-          </div>
         </div>
       </Container>
     </Section>
@@ -96,6 +67,32 @@ const milestones = [
               <p class="timeline-body">{m.body}</p>
             </div>
           ))}
+        </div>
+      </Container>
+    </Section>
+
+    <!-- FOUNDER STATEMENT -->
+    <Section bg="bone" style="padding-top: 80px; padding-bottom: 80px;">
+      <Container>
+        <div class="founder-grid">
+          <div>
+            <ImageBlock label="cham bellanova · 2024" ratio="4/5" tone="portrait" src="/assets/photos/cham_portrait.png" />
+            <div class="founder-photo-caption">Photographed in the original curing house, May 2024.</div>
+          </div>
+          <div>
+            <Eyebrow>A Word from the Founder</Eyebrow>
+            <h2 class="founder-title">In Cham's Own Words.</h2>
+            <div class="founder-quote">
+              <p>"When I come to Australia in 1983 I didn't know nobody. I had my father's recipes and I had two hands. I start making salami in my garage for the neighbours. They say <em>Cham, this is good, you should sell this</em>. So I sell it.</p>
+              <p>Forty year later we still make everything the same way. Good meat, proper curing, no shortcut. My son work with me now. My daughter do the office. She tell me I need website, I need social media. I say OK, but the salami is the same.</p>
+              <p>People ask me why I don't change the name. Small Meats &amp; Preservatives, they say it sound old fashioned. I say, that's what we make. Why I'm going to call it something else.</p>
+              <p>We do it properly. That's it. That's the whole business."</p>
+            </div>
+            <div class="founder-sig">
+              <ScriptLockup name="grazie-mate" height={56} />
+              <div class="founder-sig-text">— Cham Bellanova, Founder</div>
+            </div>
+          </div>
         </div>
       </Container>
     </Section>
