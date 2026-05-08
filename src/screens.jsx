@@ -58,9 +58,9 @@ function HomeScreen({ setRoute }) {
             <InlineLink onClick={() => setRoute("products")}>See all 11 products →</InlineLink>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3, 1fr)", gap: 24 }}>
-            <ProductCard name="Hot Soppressa" sub="Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style." weight="250 g" tone="product" batch="HS-26-04" image="/assets/photos/products/hot_soppressa.png" />
-            <ProductCard name="Mild Soppressa" sub="The classic Calabrian recipe, made without heat. Slow-cured for ten weeks." weight="250 g" tone="product" batch="MS-26-04" image="/assets/photos/products/mild_soppressa.png" />
-            <ProductCard name="Cacciatore" sub="Hunter-style salami, sized to fit a back pocket. Sold in packs of four." weight="4 × 80 g" tone="product" batch="CC-26-04" image="/assets/photos/products/cacciatore.png" />
+            <ProductCard name="Hot Soppressa" sub="Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style." weight="250 g" tone="product" batch="HS-26-04" image="/assets/photos/products/hot_soppressa.png" onClick={() => setRoute("product:hot-soppressa")} />
+            <ProductCard name="Mild Soppressa" sub="The classic Calabrian recipe, made without heat. Slow-cured for ten weeks." weight="250 g" tone="product" batch="MS-26-04" image="/assets/photos/products/mild_soppressa.png" onClick={() => setRoute("product:mild-soppressa")} />
+            <ProductCard name="Cacciatore" sub="Hunter-style salami, sized to fit a back pocket. Sold in packs of four." weight="4 × 80 g" tone="product" batch="CC-26-04" image="/assets/photos/products/cacciatore.png" onClick={() => setRoute("product:cacciatore")} />
           </div>
         </Container>
       </Section>
@@ -258,15 +258,105 @@ function AboutScreen({ setRoute }) {
    ============================================================ */
 
 const PRODUCTS = [
-  { cat: "Salami & Soppressa", name: "Hot Soppressa", sub: "Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style.", weight: "250 g", batch: "HS-26-04", image: "/assets/photos/products/hot_soppressa.png" },
-  { cat: "Salami & Soppressa", name: "Mild Soppressa", sub: "The classic Calabrian recipe, made without heat. Slow-cured for ten weeks.", weight: "250 g", batch: "MS-26-04", image: "/assets/photos/products/mild_soppressa.png" },
-  { cat: "Salami & Soppressa", name: "Traditional Salami", sub: "House-recipe pork salami. Lightly seasoned, finely-grained. Sliced or whole.", weight: "1 kg whole", batch: "TS-26-03", image: "/assets/photos/products/traditional_salami.png" },
-  { cat: "Salami & Soppressa", name: "Cacciatore", sub: "Hunter-style salami in a small format. Sized to fit a back pocket. Pack of four.", weight: "4 × 80 g", batch: "CC-26-04", image: "/assets/photos/products/cacciatore.png" },
-  { cat: "Cured Cuts", name: "Pepperoni", sub: "Hot, oily, paprika-forward. The pizzeria standard, made the proper way.", weight: "200 g sliced", batch: "PP-26-04", image: "/assets/photos/products/pepperoni.png" },
-  { cat: "Cured Cuts", name: "Pancetta", sub: "Belly pork, dry-cured for eight weeks. Available rolled or flat.", weight: "500 g", batch: "PA-26-03", image: "/assets/photos/products/pancetta.png" },
-  { cat: "Preservatives", name: "Pickled Peppers", sub: "Long red chillies in a brine of vinegar, salt, and bay leaf.", weight: "330 g jar", batch: "PE-26-02", image: "/assets/photos/products/pickled_peppers.png" },
-  { cat: "Preservatives", name: "Marinated Artichokes", sub: "Quartered artichoke hearts in olive oil, garlic and parsley.", weight: "280 g jar", batch: "AR-26-02", image: "/assets/photos/products/marinated_artichokes.png" },
-  { cat: "Preservatives", name: "Giardiniera", sub: "Mixed pickled vegetables — cauliflower, capsicum, carrot, celery.", weight: "500 g jar", batch: "GI-26-02", image: "/assets/photos/products/giardiniera.png" },
+  {
+    cat: "Salami & Soppressa", slug: "hot-soppressa", name: "Hot Soppressa",
+    sub: "Naturally cured with chilli and fennel. Coarse-cut, traditional southern-Italian style.",
+    weight: "250 g", batch: "HS-26-04", image: "/assets/photos/products/hot_soppressa.png",
+    description: "Our hot soppressa is made to a traditional southern-Italian recipe passed down from Cham's father. Coarse-cut Australian pork shoulder is blended with cracked fennel seed and dried chilli flakes, then stuffed into natural casings and hung in our curing house for a minimum of eight weeks. The result is a firm, intensely flavoured salami with a slow, building heat that pairs well with aged cheeses and crusty bread.",
+    ingredients: "Australian pork (85%), salt, dried chilli flakes, fennel seed, garlic, dextrose, black pepper, starter culture, sodium nitrate.",
+    formats: ["250 g retail vacuum pack", "1 kg whole (hospitality)", "Sliced 100 g deli pack"],
+    storage: "Refrigerate at 0–4°C. Once opened, consume within 14 days.",
+    curing: "Minimum 8 weeks natural air-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Salami & Soppressa", slug: "mild-soppressa", name: "Mild Soppressa",
+    sub: "The classic Calabrian recipe, made without heat. Slow-cured for ten weeks.",
+    weight: "250 g", batch: "MS-26-04", image: "/assets/photos/products/mild_soppressa.png",
+    description: "The mild soppressa is Cham's original recipe and the product that started the business. Made without chilli, it lets the quality of the pork and the depth of the cure speak for themselves. Coarse-ground pork with garlic, black pepper, and a touch of white wine, hung for ten full weeks. This is the salami Cham made in his garage in 1985 — the recipe hasn't changed.",
+    ingredients: "Australian pork (87%), salt, black pepper, garlic, white wine, dextrose, starter culture, sodium nitrate.",
+    formats: ["250 g retail vacuum pack", "1 kg whole (hospitality)", "Sliced 100 g deli pack"],
+    storage: "Refrigerate at 0–4°C. Once opened, consume within 14 days.",
+    curing: "Minimum 10 weeks natural air-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Salami & Soppressa", slug: "traditional-salami", name: "Traditional Salami",
+    sub: "House-recipe pork salami. Lightly seasoned, finely-grained. Sliced or whole.",
+    weight: "1 kg whole", batch: "TS-26-03", image: "/assets/photos/products/traditional_salami.png",
+    description: "Our traditional salami is a finely-grained, lightly seasoned pork salami suited to everyday eating. It's the most versatile product in our range — equally at home on a sandwich, a pizza, or an antipasto board. Finely ground Australian pork seasoned with salt, pepper, and garlic, then cured for six weeks. Available whole or pre-sliced for deli and hospitality.",
+    ingredients: "Australian pork (88%), salt, black pepper, garlic, dextrose, starter culture, sodium nitrate.",
+    formats: ["1 kg whole", "500 g half", "Sliced 150 g deli pack", "Bulk 5 kg (hospitality)"],
+    storage: "Refrigerate at 0–4°C. Once opened, consume within 14 days.",
+    curing: "Minimum 6 weeks natural air-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Salami & Soppressa", slug: "cacciatore", name: "Cacciatore",
+    sub: "Hunter-style salami in a small format. Sized to fit a back pocket. Pack of four.",
+    weight: "4 × 80 g", batch: "CC-26-04", image: "/assets/photos/products/cacciatore.png",
+    description: "Cacciatore — 'hunter's salami' — is a small-format dried sausage designed to be eaten on the go. Ours are hand-tied, individually cured, and sold in packs of four. They're sized to fit a coat pocket or a lunchbox. Rich, dense, and deeply savoury, with a fine grind and a peppery finish. A favourite with school lunches and hiking packs alike.",
+    ingredients: "Australian pork (86%), salt, black pepper, garlic, paprika, fennel seed, dextrose, starter culture, sodium nitrate.",
+    formats: ["4 × 80 g retail pack", "20-pack box (hospitality)"],
+    storage: "Refrigerate at 0–4°C. Individually sealed — once opened, consume within 7 days.",
+    curing: "Minimum 4 weeks natural air-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Cured Cuts", slug: "pepperoni", name: "Pepperoni",
+    sub: "Hot, oily, paprika-forward. The pizzeria standard, made the proper way.",
+    weight: "200 g sliced", batch: "PP-26-04", image: "/assets/photos/products/pepperoni.png",
+    description: "Our pepperoni is made for the pizzeria. Smoky, paprika-forward, with a clean heat and an oily cure that crisps beautifully under a broiler. We use a blend of pork and a small percentage of beef for the characteristic texture. Pre-sliced for convenience or available as whole sticks for in-house slicing. Supplied to over sixty pizzerias across NSW.",
+    ingredients: "Australian pork (72%), Australian beef (12%), salt, paprika, chilli, garlic, black pepper, dextrose, starter culture, sodium nitrate.",
+    formats: ["200 g sliced retail pack", "1.5 kg whole stick (hospitality)", "Pre-sliced 2 kg bulk (hospitality)"],
+    storage: "Refrigerate at 0–4°C. Once opened, consume within 10 days.",
+    curing: "Minimum 5 weeks smoked and air-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Cured Cuts", slug: "pancetta", name: "Pancetta",
+    sub: "Belly pork, dry-cured for eight weeks. Available rolled or flat.",
+    weight: "500 g", batch: "PA-26-03", image: "/assets/photos/products/pancetta.png",
+    description: "Our pancetta is dry-cured pork belly, seasoned with juniper, bay leaf, and black pepper, then hung for eight weeks. Available rolled (arrotolata) for slicing into thin rounds, or flat (stesa) for dicing into lardons. The fat is silky and flavourful — it renders beautifully for pasta, risotto, and any dish where you need a rich, porky base.",
+    ingredients: "Australian pork belly (92%), salt, black pepper, juniper berry, bay leaf, garlic, dextrose, sodium nitrate.",
+    formats: ["500 g rolled (retail)", "500 g flat (retail)", "2 kg whole slab (hospitality)"],
+    storage: "Refrigerate at 0–4°C. Once opened, consume within 14 days.",
+    curing: "Minimum 8 weeks dry-cured",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Preservatives", slug: "pickled-peppers", name: "Pickled Peppers",
+    sub: "Long red chillies in a brine of vinegar, salt, and bay leaf.",
+    weight: "330 g jar", batch: "PE-26-02", image: "/assets/photos/products/pickled_peppers.png",
+    description: "Whole long red chillies pickled in a simple brine of white wine vinegar, salt, and bay leaf. Crunchy, tangy, and gently hot — these are the peppers Cham's family served at every meal in Calabria. Excellent alongside cured meats, on sandwiches, or chopped through a pasta sauce for a vinegary kick.",
+    ingredients: "Long red chillies, white wine vinegar, water, salt, bay leaf, garlic.",
+    formats: ["330 g glass jar (retail)", "2 L catering jar (hospitality)"],
+    storage: "Store in a cool, dry place. Refrigerate after opening. Consume within 4 weeks of opening.",
+    curing: "Brined minimum 3 weeks",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Preservatives", slug: "marinated-artichokes", name: "Marinated Artichokes",
+    sub: "Quartered artichoke hearts in olive oil, garlic and parsley.",
+    weight: "280 g jar", batch: "AR-26-02", image: "/assets/photos/products/marinated_artichokes.png",
+    description: "Quartered artichoke hearts, blanched and marinated in Australian extra-virgin olive oil with garlic, flat-leaf parsley, and a touch of white wine vinegar. Tender, earthy, and rich — ideal for antipasto platters, pizza toppings, or served straight from the jar with good bread. Made in small batches at our Lismore facility.",
+    ingredients: "Artichoke hearts (55%), extra-virgin olive oil, white wine vinegar, garlic, flat-leaf parsley, salt, black pepper.",
+    formats: ["280 g glass jar (retail)", "2 L catering jar (hospitality)"],
+    storage: "Store in a cool, dry place. Refrigerate after opening. Keep submerged in oil. Consume within 3 weeks of opening.",
+    curing: "Marinated minimum 2 weeks",
+    origin: "Lismore, NSW",
+  },
+  {
+    cat: "Preservatives", slug: "giardiniera", name: "Giardiniera",
+    sub: "Mixed pickled vegetables — cauliflower, capsicum, carrot, celery.",
+    weight: "500 g jar", batch: "GI-26-02", image: "/assets/photos/products/giardiniera.png",
+    description: "Our giardiniera is a classic Italian mixed pickle — cauliflower, capsicum, carrot, and celery, cut into bite-sized pieces and pickled in white wine vinegar with oregano and chilli. Bright, crunchy, and versatile. Serve it as a side, pile it on a sandwich, or eat it straight from the jar. A staple of every Italian pantry and a natural partner to everything else we make.",
+    ingredients: "Cauliflower, capsicum, carrot, celery, white wine vinegar, water, extra-virgin olive oil, salt, oregano, dried chilli, garlic.",
+    formats: ["500 g glass jar (retail)", "2 L catering jar (hospitality)"],
+    storage: "Store in a cool, dry place. Refrigerate after opening. Consume within 4 weeks of opening.",
+    curing: "Pickled minimum 2 weeks",
+    origin: "Lismore, NSW",
+  },
 ];
 
 function ProductsScreen({ setRoute }) {
@@ -316,7 +406,7 @@ function ProductsScreen({ setRoute }) {
       <Section bg="cream" style={{ paddingTop: 32, paddingBottom: 96 }}>
         <Container>
           <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3, 1fr)", gap: 24 }}>
-            {list.map(p => <ProductCard key={p.name} {...p} />)}
+            {list.map(p => <ProductCard key={p.name} {...p} onClick={() => setRoute("product:" + p.slug)} />)}
           </div>
         </Container>
       </Section>
@@ -549,12 +639,180 @@ function Field({ label, type, textarea, select, options, defaultValue, colSpan }
 }
 
 /* ============================================================
+   PRODUCT DETAIL
+   ============================================================ */
+
+function ProductDetailScreen({ slug, setRoute }) {
+  const mobile = useIsMobile();
+  const product = PRODUCTS.find(p => p.slug === slug);
+  if (!product) return (
+    <main>
+      <Section bg="cream" style={{ paddingTop: 96, paddingBottom: 96 }}>
+        <Container>
+          <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: 48, textTransform: "uppercase", color: "var(--chams-blue-ink)" }}>Product Not Found</h1>
+          <Button kind="primary" onClick={() => setRoute("products")}>Back to Products</Button>
+        </Container>
+      </Section>
+      <SiteFooter setRoute={setRoute} />
+    </main>
+  );
+
+  const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
+
+  return (
+    <main>
+      <Section bg="cream" style={{ paddingTop: 32, paddingBottom: 0 }}>
+        <Container>
+          <a href="#" onClick={e => { e.preventDefault(); setRoute("products"); }}
+            style={{
+              fontFamily: "var(--font-subhead)", fontWeight: 700, fontSize: 12,
+              letterSpacing: "0.18em", textTransform: "uppercase",
+              color: "var(--chams-stone)", textDecoration: "none",
+              display: "inline-flex", alignItems: "center", gap: 8,
+            }}>
+            <span style={{ transform: "rotate(180deg)", display: "inline-flex" }}><Icon name="arrowRight" size={12} /></span>
+            Back to Products
+          </a>
+        </Container>
+      </Section>
+
+      <Section bg="cream" style={{ paddingTop: 24, paddingBottom: 80 }}>
+        <Container>
+          <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 32 : 64, alignItems: "start" }}>
+            <div style={{ position: mobile ? "static" : "sticky", top: 100 }}>
+              <ImageBlock label={product.name.toLowerCase()} ratio="1/1" tone="product" src={product.image} objectFit="contain" style={{ borderRadius: 8 }} />
+            </div>
+
+            <div>
+              <Eyebrow>{product.cat}</Eyebrow>
+              <h1 style={{
+                fontFamily: "var(--font-display)", fontWeight: 900,
+                fontSize: mobile ? 44 : 64, lineHeight: 0.96,
+                textTransform: "uppercase", color: "var(--chams-blue-ink)",
+                margin: "12px 0 8px", letterSpacing: "-0.005em",
+              }}>{product.name}</h1>
+              <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 24 }}>
+                <Badge kind="blue">{product.weight}</Badge>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--chams-grain)" }}>Batch · {product.batch}</span>
+              </div>
+
+              <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--chams-stone)", marginBottom: 32 }}>
+                {product.description}
+              </p>
+
+              <div style={{ display: "grid", gap: 0 }}>
+                <DetailRow label="Ingredients" value={product.ingredients} />
+                <DetailRow label="Curing" value={product.curing} />
+                <DetailRow label="Storage" value={product.storage} />
+                <DetailRow label="Origin" value={product.origin} />
+                <DetailRow label="Available Formats" value={
+                  <ul style={{ margin: 0, paddingLeft: 18 }}>
+                    {product.formats.map(f => <li key={f} style={{ fontSize: 14, lineHeight: 1.6, color: "var(--chams-stone)" }}>{f}</li>)}
+                  </ul>
+                } />
+              </div>
+
+              <div style={{ display: "flex", gap: 14, marginTop: 32 }}>
+                <Button kind="red" onClick={() => setRoute("contact")}>Wholesale Enquiry</Button>
+                <Button kind="outline" href="#">Download Spec Sheet</Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {related.length > 0 && (
+        <Section bg="bone" style={{ paddingTop: 64, paddingBottom: 80 }}>
+          <Container>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, gap: 24 }}>
+              <SectionHead eyebrow={product.cat} title="More in This Range" />
+              <InlineLink onClick={() => setRoute("products")}>See all products →</InlineLink>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : `repeat(${Math.min(related.length, 3)}, 1fr)`, gap: 24 }}>
+              {related.map(p => <ProductCard key={p.name} {...p} onClick={() => setRoute("product:" + p.slug)} />)}
+            </div>
+          </Container>
+        </Section>
+      )}
+
+      <SiteFooter setRoute={setRoute} />
+    </main>
+  );
+}
+
+function DetailRow({ label, value }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: 16, padding: "14px 0", borderTop: "1px solid var(--chams-tan)", alignItems: "start" }}>
+      <div style={{
+        fontFamily: "var(--font-subhead)", fontWeight: 700, fontSize: 11,
+        letterSpacing: "0.18em", textTransform: "uppercase",
+        color: "var(--chams-blue)", paddingTop: 2,
+      }}>{label}</div>
+      <div style={{ fontSize: 14, lineHeight: 1.55, color: "var(--chams-stone)" }}>{value}</div>
+    </div>
+  );
+}
+
+/* ============================================================
    APP SHELL
    ============================================================ */
+
+function usePageMeta(title, description, image) {
+  useEffect(() => {
+    document.title = title;
+    const setMeta = (property, content) => {
+      let el = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(property.startsWith("og:") || property.startsWith("twitter:") ? "property" : "name", property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+    setMeta("description", description);
+    setMeta("og:title", title);
+    setMeta("og:description", description);
+    setMeta("og:type", "website");
+    setMeta("og:site_name", "Cham's Small Meats & Preservatives");
+    if (image) setMeta("og:image", image);
+    setMeta("twitter:card", image ? "summary_large_image" : "summary");
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", description);
+    if (image) setMeta("twitter:image", image);
+  }, [title, description, image]);
+}
 
 function App() {
   const [route, setRoute] = useState("home");
   useEffect(() => { window.scrollTo(0, 0); }, [route]);
+
+  const isProduct = route.startsWith("product:");
+  const productSlug = isProduct ? route.slice(8) : null;
+  const product = productSlug ? PRODUCTS.find(p => p.slug === productSlug) : null;
+
+  const pageMeta = {
+    home: { title: "Cham's Small Meats & Preservatives — Family-Owned Smallgoods, Lismore NSW", desc: "Traditional cured meats and preservatives made the same way for nearly forty years. Supplying independent retailers and hospitality providers across NSW since 1987.", img: "/assets/photos/cham_portrait.png" },
+    about: { title: "Our Story — Cham's Small Meats & Preservatives", desc: "Founded in a Goonellabah garage in 1985, Cham's has grown into a 60-staff facility in Lismore. Family-owned, same recipes, forty years on.", img: "/assets/photos/processing_close_up.png" },
+    products: { title: "Products — Cham's Small Meats & Preservatives", desc: "Nine products across three categories: salami & soppressa, cured cuts, and preservatives. All manufactured at our Lismore facility.", img: "/assets/photos/factory_shelves.png" },
+    community: { title: "Community & Environment — Cham's Small Meats & Preservatives", desc: "Cham's is committed to the Northern Rivers community. Proud supporter of Dam Kings Beach and responsible environmental management.", img: "/assets/photos/dam_kings_beach_community.png" },
+    contact: { title: "Contact — Cham's Small Meats & Preservatives", desc: "Get in touch with Cham's. Office hours Monday to Friday, 7am to 4pm. Wholesale and hospitality enquiries welcome.", img: "/assets/photos/chams_factory_front_van.png" },
+  };
+
+  const meta = product
+    ? { title: `${product.name} — Cham's Small Meats & Preservatives`, desc: product.sub, img: product.image }
+    : (pageMeta[route] || pageMeta.home);
+
+  usePageMeta(meta.title, meta.desc, meta.img);
+
+  if (isProduct) {
+    return (
+      <div data-screen-label={`Website · product · ${productSlug}`}>
+        <SiteHeader route="products" setRoute={setRoute} />
+        <ProductDetailScreen slug={productSlug} setRoute={setRoute} />
+      </div>
+    );
+  }
+
   const screens = { home: HomeScreen, about: AboutScreen, products: ProductsScreen, community: CommunityScreen, contact: ContactScreen };
   const Cur = screens[route] || HomeScreen;
   return (

@@ -394,9 +394,9 @@ function FooterAddr({ children }) {
 
 /* -------------------- PRODUCT CARD -------------------- */
 
-function ProductCard({ name, sub, weight, tone, batch, image }) {
+function ProductCard({ name, sub, weight, tone, batch, image, onClick }) {
   return (
-    <article style={{
+    <article onClick={onClick} style={{
       background: "var(--chams-bone)",
       border: "1px solid var(--chams-tan)",
       borderRadius: 4,
