@@ -1,0 +1,212 @@
+/* =========================================================================
+   Cham's Small Meats & Preservatives — Colors + Type
+   ========================================================================= */
+
+/* ---------- Webfonts (Google Fonts; loaded by index pages) ----------------
+   Display:    Big Shoulders Display  — for the headline / hero type. Bold,
+               condensed, industrial. Closest free match to the custom logo
+               type used on "CHAM'S".
+   Subhead:    Barlow Condensed       — for eyebrows, badges, ALL CAPS labels.
+   Body:       Source Sans 3          — clean, professional, easy at small
+                                        sizes; the corporate body voice.
+   Accent:     Source Serif 4         — for the founder's quote and any
+                                        dignified pull-quotes.
+   Script:     Caveat Brush           — fallback for arbitrary brush-script
+                                        runs. The two real script lockups
+                                        ("We Do It Properly", "Grazie Mate!")
+                                        are SVG assets in /assets/logos.
+   --------------------------------------------------------------------------
+   FONT SUBSTITUTION NOTE: We don't have the original logo's custom condensed
+   typeface. Big Shoulders Display Black is the nearest free match. If the
+   brand has the actual logo typeface (e.g. Industry, Tungsten, Brother 1816,
+   Druk Wide), drop the .woff2 into /fonts/ and update --font-display.
+   ----------------------------------------------------------------------- */
+
+:root {
+  /* ============== COLORS ============== */
+
+  /* Brand core */
+  --chams-blue:        #1B3A66;   /* Primary. The deep navy on every logo. */
+  --chams-blue-deep:   #122749;   /* Hover/pressed darker blue. */
+  --chams-blue-ink:    #0E1E38;   /* Heading ink on cream. */
+  --chams-red:         #B83A28;   /* Secondary. The clay/oxide red badge. */
+  --chams-red-deep:    #952D1E;   /* Hover/pressed darker red. */
+  --chams-cream:       #F2E7CB;   /* Primary surface. Warm cream/canvas. */
+  --chams-cream-deep:  #E7D9B4;   /* Cream divider / secondary surface. */
+  --chams-bone:        #FAF4E2;   /* Lighter cream for cards on cream. */
+  --chams-paper:       #FFFFFF;   /* Pure white — sparingly. */
+
+  /* Neutrals (warm, slightly desaturated) */
+  --chams-ink:         #1A1410;   /* Almost-black text, warm. */
+  --chams-charcoal:    #2E2A24;
+  --chams-stone:       #5A5147;   /* Body on cream / muted text. */
+  --chams-grain:       #8C8174;   /* Captions, fine print. */
+  --chams-tan:         #C9B98F;   /* Hairlines, dividers on cream. */
+
+  /* Semantic (kept conservative — this is a meat company, not an app) */
+  --chams-success:     #4F6B3A;   /* Olive — pairs with cream. */
+  --chams-warning:     #C28A1F;   /* Mustard. */
+  --chams-error:       #952D1E;   /* Same as red-deep. */
+
+  /* Foreground / background tokens (semantic) */
+  --bg:                var(--chams-cream);
+  --bg-elevated:       var(--chams-bone);
+  --bg-deep:           var(--chams-blue);
+  --bg-paper:          var(--chams-paper);
+
+  --fg:                var(--chams-ink);
+  --fg-muted:          var(--chams-stone);
+  --fg-subtle:         var(--chams-grain);
+  --fg-on-blue:        var(--chams-cream);
+  --fg-on-red:         var(--chams-cream);
+
+  --hairline:          var(--chams-tan);
+  --hairline-strong:   var(--chams-blue);
+
+  /* ============== TYPOGRAPHY ============== */
+
+  --font-display:  "Big Shoulders Display", "Oswald", "Arial Narrow", sans-serif;
+  --font-subhead:  "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
+  --font-body:     "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif:    "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-script:   "Caveat Brush", "Brush Script MT", cursive;
+  --font-mono:     "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Type scale — modular, slightly condensed feel.
+     Display tokens are intended for Big Shoulders / Barlow Condensed. */
+  --t-display-xl:  clamp(64px, 9vw, 144px);  /* hero "WE DO IT PROPERLY" */
+  --t-display-lg:  clamp(48px, 6vw, 96px);
+  --t-display-md:  clamp(36px, 4.4vw, 64px);
+  --t-h1:          44px;
+  --t-h2:          32px;
+  --t-h3:          24px;
+  --t-h4:          20px;
+  --t-eyebrow:     13px;   /* tracked, uppercase Barlow Condensed */
+  --t-body-lg:     19px;
+  --t-body:        17px;
+  --t-body-sm:     15px;
+  --t-caption:     13px;
+  --t-mono:        13px;
+
+  --lh-tight:      1.05;
+  --lh-snug:       1.18;
+  --lh-normal:     1.45;
+  --lh-loose:      1.6;
+
+  --track-tight:   -0.01em;
+  --track-normal:  0;
+  --track-loose:   0.02em;
+  --track-eyebrow: 0.16em;   /* uppercase eyebrows */
+
+  /* ============== SPACING ============== */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* ============== RADII / BORDERS ============== */
+  /* Industrial / signage feel — radii are MODEST, never pillowy. */
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 8px;
+  --r-4: 12px;
+  --r-pill: 999px;
+
+  --bw-hair:  1px;
+  --bw-rule:  2px;
+  --bw-stamp: 3px;   /* the chunky outline-stamp look from the logo */
+
+  /* ============== ELEVATION ============== */
+  /* Shadows are sparing and warm — printed-paper / signage, not glassmorphic. */
+  --shadow-stamp:   0 2px 0 0 var(--chams-blue-deep);
+  --shadow-stamp-r: 0 2px 0 0 var(--chams-red-deep);
+  --shadow-card:    0 1px 0 0 rgba(26,20,16,.06),
+                    0 8px 24px -12px rgba(26,20,16,.18);
+  --shadow-lift:    0 2px 0 0 rgba(26,20,16,.05),
+                    0 24px 48px -20px rgba(26,20,16,.25);
+}
+
+/* ============== ELEMENT DEFAULTS ============== */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--chams-blue-ink);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  margin: 0;
+}
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); }
+h4 { font-size: var(--t-h4); }
+
+p { margin: 0 0 var(--s-4) 0; }
+p:last-child { margin-bottom: 0; }
+
+small, .caption {
+  font-size: var(--t-caption);
+  color: var(--fg-subtle);
+}
+
+/* Eyebrow / kicker text — used heavily in this brand. */
+.eyebrow {
+  font-family: var(--font-subhead);
+  font-weight: 700;
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--chams-red);
+}
+
+/* Display / hero type. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+
+/* Brush-script style (for arbitrary script accents — prefer SVG lockups). */
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--chams-blue);
+  font-style: italic;
+}
+
+/* Founder / pull-quote serif. */
+.pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--chams-blue-ink);
+}
+
+/* Hairline rule — used as section dividers. */
+.rule {
+  border: 0;
+  border-top: var(--bw-rule) solid var(--chams-blue);
+  margin: var(--s-6) 0;
+}
