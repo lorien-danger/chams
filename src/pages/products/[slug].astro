@@ -21,6 +21,18 @@ export function getStaticPaths() {
 
 const { product } = Astro.props;
 const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  "description": product.description,
+  "image": `https://www.chams.com.au${product.image}`,
+  "brand": { "@type": "Brand", "name": "Cham's Small Meats & Preservatives" },
+  "category": product.cat,
+  "manufacturer": { "@type": "Organization", "name": "Cham's Small Meats & Preservatives", "url": "https://www.chams.com.au" },
+  "countryOfOrigin": { "@type": "Country", "name": "Australia" },
+};
 ---
 <Base
   title={`${product.name} — Cham's Small Meats & Preservatives`}
@@ -28,6 +40,7 @@ const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product
   image={`/assets/og/product-${product.slug}.png`}
   activeRoute="products"
 >
+<script slot="head" type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <main>
     <Section bg="cream" style="padding-top: 32px; padding-bottom: 0;">
       <Container>

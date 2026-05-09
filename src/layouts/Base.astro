@@ -13,6 +13,7 @@ interface Props {
 const SITE_URL = 'https://www.chams.com.au';
 const { title, description, image = '/assets/og/default.png', activeRoute = 'home' } = Astro.props;
 const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
+const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
 ---
 <!doctype html>
 <html lang="en-AU">
@@ -25,17 +26,47 @@ const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
     <meta name="apple-mobile-web-app-title" content="Cham's" />
     <link rel="manifest" href="/site.webmanifest?v=20260508" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="description" content={description} />
+    <meta name="geo.region" content="AU-NSW" />
+    <meta name="geo.placename" content="Lismore" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Cham's Small Meats & Preservatives" />
     <meta property="og:image" content={absoluteImage} />
+    <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteImage} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.chams.com.au/#business",
+      "name": "Cham's Small Meats & Preservatives",
+      "url": "https://www.chams.com.au",
+      "logo": "https://www.chams.com.au/assets/logos/chams-main-blue.svg",
+      "image": "https://www.chams.com.au/assets/og/default.png",
+      "description": "Family-owned smallgoods manufacturer based in Lismore, Northern NSW. Traditional cured meats and preservatives since 1987.",
+      "foundingDate": "1987",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 Industrial Drive",
+        "addressLocality": "Lismore",
+        "addressRegion": "NSW",
+        "postalCode": "2480",
+        "addressCountry": "AU"
+      },
+      "telephone": "+61266214488",
+      "email": "office@chams.com.au",
+      "openingHours": "Mo-Fr 07:00-16:00",
+      "priceRange": "$$",
+      "sameAs": []
+    })} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,wght@1,400&family=Caveat+Brush&family=JetBrains+Mono:wght@400;500&display=swap" />
@@ -43,6 +74,7 @@ const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
       *, *::before, *::after { box-sizing: border-box; }
       body { margin: 0; }
     </style>
+    <slot name="head" />
   </head>
   <body>
     <Header activeRoute={activeRoute} />

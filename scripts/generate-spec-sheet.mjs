@@ -50,6 +50,13 @@ const PRICING = {
                           { fmt: '2 L catering jar',            unit: '$28.00', case_qty: '6',  case_price: '$152.00' }],
   'giardiniera':         [{ fmt: '500 g glass jar (retail)',    unit: '$8.00',  case_qty: '12', case_price: '$86.00' },
                           { fmt: '2 L catering jar',            unit: '$20.00', case_qty: '6',  case_price: '$108.00' }],
+  'sodium-nitrite':      [{ fmt: '20 kg food-grade pail',       unit: '$95.00', case_qty: '1',  case_price: '$95.00' }],
+  'phosphate-blend':     [{ fmt: '20 kg food-grade pail',       unit: '$88.00', case_qty: '1',  case_price: '$88.00' }],
+  'sodium-erythorbate':  [{ fmt: '20 kg food-grade pail',       unit: '$110.00',case_qty: '1',  case_price: '$110.00' }],
+  'potassium-sorbate':   [{ fmt: '20 kg food-grade pail',       unit: '$105.00',case_qty: '1',  case_price: '$105.00' }],
+  'sodium-benzoate':     [{ fmt: '20 kg food-grade pail',       unit: '$78.00', case_qty: '1',  case_price: '$78.00' }],
+  'bht':                 [{ fmt: '20 kg food-grade pail',       unit: '$135.00',case_qty: '1',  case_price: '$135.00' }],
+  'propylparaben':       [{ fmt: '20 kg food-grade pail',       unit: '$120.00',case_qty: '1',  case_price: '$120.00' }],
 }
 
 function loadFont(slug, weight) {
@@ -168,7 +175,7 @@ function productBlock(product) {
   }
 
   function infoRow(label, value) {
-    return h('div', { style: { display: 'flex', gap: 12, padding: '6px 0' } },
+    return h('div', { style: { display: 'flex', gap: 12, padding: isCompact ? '3px 0' : '6px 0' } },
       h('div', { style: { ...labelStyle, width: 110, flexShrink: 0 } }, label),
       h('div', { style: valueStyle }, value),
     )
@@ -186,16 +193,18 @@ function productBlock(product) {
     fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: 13, color: C.blueInk,
   }
 
+  const isCompact = pricing.length <= 1
+
   return h('div', {
     style: {
-      display: 'flex', flexDirection: 'column', marginBottom: 8,
+      display: 'flex', flexDirection: 'column', marginBottom: isCompact ? 2 : 8,
     },
   },
     // Title row
     h('div', {
       style: {
         display: 'flex', alignItems: 'baseline', gap: 16,
-        borderTop: `3px solid ${C.blue}`, paddingTop: 12, marginBottom: 4,
+        borderTop: `2px solid ${C.blue}`, paddingTop: 8, marginBottom: 2,
       },
     },
       h('div', {
@@ -223,7 +232,7 @@ function productBlock(product) {
 
     // Two-column: specs left, pricing right
     h('div', {
-      style: { display: 'flex', gap: 32, marginTop: 10 },
+      style: { display: 'flex', gap: 32, marginTop: isCompact ? 4 : 10 },
     },
       // Left: specs
       h('div', {
@@ -387,26 +396,29 @@ async function main() {
   const creamLogo = logoDataUrl(resolve(root, 'public/assets/logos/chams-full-cream.svg'), 700)
   const blueLogo  = logoDataUrl(resolve(root, 'public/assets/logos/chams-main-blue.svg'), 400)
 
-  // Group products by category
-  const salami = PRODUCTS.filter(p => p.cat === 'Salami & Soppressa')
-  const cured  = PRODUCTS.filter(p => p.cat === 'Cured Cuts')
-  const preserv = PRODUCTS.filter(p => p.cat === 'Preservatives')
+  // Group products into spreads
+  const meats    = PRODUCTS.filter(p => p.cat === 'Salami & Soppressa' || p.cat === 'Cured Cuts')
+  const goods    = PRODUCTS.filter(p => p.cat === 'Preserved Goods')
+  const chems    = PRODUCTS.filter(p => p.cat === 'Preservatives')
 
-  const totalPages = 4 // salami, cured+preserv, terms (we'll count after layout)
+  const totalPages = 4
 
   const pages = []
 
   console.log('  rendering cover...')
   pages.push(await renderPage(coverPage(creamLogo), fonts))
 
-  console.log('  rendering salami & soppressa...')
-  pages.push(await renderPage(contentPage(salami, blueLogo, 1, totalPages, 'Salami & Soppressa'), fonts))
+  console.log('  rendering meats...')
+  pages.push(await renderPage(contentPage(meats, blueLogo, 1, totalPages, 'Salami, Soppressa & Cured Cuts'), fonts))
 
-  console.log('  rendering cured cuts & preservatives...')
-  pages.push(await renderPage(contentPage([...cured, ...preserv], blueLogo, 2, totalPages, 'Cured Cuts & Preservatives'), fonts))
+  console.log('  rendering preserved goods...')
+  pages.push(await renderPage(contentPage(goods, blueLogo, 2, totalPages, 'Preserved Goods'), fonts))
+
+  console.log('  rendering preservatives...')
+  pages.push(await renderPage(contentPage(chems, blueLogo, 3, totalPages, 'Preservatives'), fonts))
 
   console.log('  rendering terms...')
-  pages.push(await renderPage(termsPage(blueLogo, 3, totalPages), fonts))
+  pages.push(await renderPage(termsPage(blueLogo, totalPages, totalPages), fonts))
 
   // Build PDF
   const PDFDocument = (await import('pdfkit')).default
