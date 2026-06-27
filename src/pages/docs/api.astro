@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import InlineLink from '../../components/InlineLink.astro';
+---
+<Base
+  title="API Documentation - Cham's Small Meats & Preservatives"
+  description="Machine-readable discovery resources for Cham's public product catalog."
+  activeRoute="products"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 72px; padding-bottom: 88px;">
+      <Container>
+        <article class="api-docs">
+          <Eyebrow>Agent Discovery</Eyebrow>
+          <h1>Public Catalog API</h1>
+          <p>
+            Cham's publishes a small public catalog API for agents, search systems, and integration tools that need structured product information.
+          </p>
+          <div class="doc-list">
+            <a href="/.well-known/api-catalog">API catalog</a>
+            <a href="/api/openapi.json">OpenAPI description</a>
+            <a href="/api/products.json">Product data</a>
+            <a href="/api/status.json">Status endpoint</a>
+            <a href="/sitemap.xml">Sitemap</a>
+          </div>
+          <p class="doc-note">
+            The API is read-only and does not require authentication. Wholesale enquiries should use the public contact page.
+          </p>
+          <InlineLink href="/contact/">Wholesale contact -></InlineLink>
+        </article>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .api-docs {
+    max-width: 760px;
+  }
+  .api-docs h1 {
+    font-family: var(--font-display);
+    font-size: 72px;
+    line-height: .95;
+    text-transform: uppercase;
+    color: var(--chams-blue-ink);
+    margin: 18px 0 22px;
+  }
+  .api-docs p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--chams-stone);
+  }
+  .doc-list {
+    display: grid;
+    gap: 10px;
+    margin: 30px 0;
+  }
+  .doc-list a {
+    color: var(--chams-blue);
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .doc-note {
+    border-top: 1px solid var(--chams-tan);
+    padding-top: 22px;
+  }
+  @media (max-width: 768px) {
+    .api-docs h1 {
+      font-size: 48px;
+    }
+  }
+</style>

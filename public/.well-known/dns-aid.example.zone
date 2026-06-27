@@ -1,0 +1,6 @@
+; Publish these records at the authoritative DNS provider for chams.com.au.
+; Enable DNSSEC on the public zone so validating resolvers can authenticate them.
+
+_index._agents.chams.com.au. 3600 IN SVCB 1 www.chams.com.au. alpn="h2,h3" port=443 mandatory=alpn,port
+_catalog._agents.chams.com.au. 3600 IN SVCB 1 www.chams.com.au. alpn="h2,h3" port=443 mandatory=alpn,port key65535="/.well-known/api-catalog"
+_mcp._agents.chams.com.au. 3600 IN SVCB 1 www.chams.com.au. alpn="mcp,h2" port=443 mandatory=alpn,port key65535="/.well-known/mcp/server-card.json"

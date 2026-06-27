@@ -27,6 +27,10 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
     <link rel="manifest" href="/site.webmanifest?v=20260508" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+    <link rel="service-desc" href="/api/openapi.json" type="application/openapi+json" />
+    <link rel="service-doc" href="/docs/api/" />
+    <link rel="describedby" href="/auth.md" type="text/markdown" />
     <meta name="description" content={description} />
     <meta name="geo.region" content="AU-NSW" />
     <meta name="geo.placename" content="Lismore" />
@@ -80,5 +84,56 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
     <Header activeRoute={activeRoute} />
     <slot />
     <Footer />
+    <script>
+      (() => {
+        const modelContext = navigator.modelContext;
+        if (!modelContext) return;
+
+        const tools = [
+          {
+            name: 'search_products',
+            description: "Search Cham's public product range by name, category, ingredient, or format.",
+            inputSchema: {
+              type: 'object',
+              properties: {
+                query: {
+                  type: 'string',
+                  description: 'Search text to match against public product information.'
+                }
+              },
+              required: ['query']
+            },
+            execute: async ({ query }) => {
+              const response = await fetch('/api/products.json');
+              const { products } = await response.json();
+              const needle = String(query || '').toLowerCase();
+              return products.filter((product) => JSON.stringify(product).toLowerCase().includes(needle));
+            }
+          },
+          {
+            name: 'get_wholesale_contact',
+            description: "Return Cham's public wholesale contact details and enquiry page.",
+            inputSchema: {
+              type: 'object',
+              properties: {}
+            },
+            execute: async () => ({
+              name: "Cham's Small Meats & Preservatives",
+              telephone: '+61266214488',
+              email: 'office@chams.com.au',
+              enquiryUrl: 'https://www.chams.com.au/contact/'
+            })
+          }
+        ];
+
+        const controller = new AbortController();
+        if (typeof modelContext.registerTool === 'function') {
+          tools.forEach((tool) => modelContext.registerTool(tool, { signal: controller.signal }));
+        } else if (typeof modelContext.provideContext === 'function') {
+          modelContext.provideContext({ tools }, { signal: controller.signal });
+        }
+        window.addEventListener('pagehide', () => controller.abort(), { once: true });
+      })();
+    </script>
   </body>
 </html>
