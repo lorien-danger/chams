@@ -39,6 +39,7 @@ const productSchema = {
   description={product.sub}
   image={`/assets/og/product-${product.slug}.png`}
   activeRoute="products"
+  noindex={product.slug === 'sodium-nitrite'}
 >
 <script slot="head" type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <main>

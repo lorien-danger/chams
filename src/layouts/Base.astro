@@ -8,10 +8,11 @@ interface Props {
   description: string;
   image?: string;
   activeRoute?: string;
+  noindex?: boolean;
 }
 
 const SITE_URL = 'https://www.chams.com.au';
-const { title, description, image = '/assets/og/default.png', activeRoute = 'home' } = Astro.props;
+const { title, description, image = '/assets/og/default.png', activeRoute = 'home', noindex = false } = Astro.props;
 const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
 const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
 ---
@@ -32,6 +33,7 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
     <link rel="service-doc" href="/docs/api/" />
     <link rel="describedby" href="/auth.md" type="text/markdown" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="geo.region" content="AU-NSW" />
     <meta name="geo.placename" content="Lismore" />
     <meta property="og:title" content={title} />
@@ -46,6 +48,14 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteImage} />
     <title>{title}</title>
+    {Astro.url.pathname === '/' && <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      "name": "Cham's",
+      "alternateName": ["Chams", "Cham's Small Meats & Preservatives"],
+      "url": `${SITE_URL}/`
+    })} />}
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",

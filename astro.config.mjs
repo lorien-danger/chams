@@ -4,5 +4,5 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.chams.com.au',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/products/sodium-nitrite/') })],
 });

@@ -50,6 +50,12 @@ Family-owned smallgoods manufacturer in Lismore, NSW, producing traditional cure
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.hostname === 'chams.com.au') {
+      url.hostname = 'www.chams.com.au';
+      return Response.redirect(url.toString(), 301);
+    }
+
     const accept = request.headers.get('Accept') || '';
 
     if ((url.pathname === '/' || url.pathname === '/index.html') && accept.includes('text/markdown')) {

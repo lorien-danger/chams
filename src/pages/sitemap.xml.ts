@@ -14,7 +14,7 @@ const staticPaths = [
 
 const urls = [
   ...staticPaths,
-  ...PRODUCTS.map((product) => `/products/${product.slug}/`)
+  ...PRODUCTS.filter((product) => product.slug !== 'sodium-nitrite').map((product) => `/products/${product.slug}/`)
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
