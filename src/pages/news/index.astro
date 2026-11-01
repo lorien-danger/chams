@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import { NEWS } from '../../news.js';
+---
+<Base
+  title="News & Notes — Cham's Small Meats & Preservatives"
+  description="News and notes from Cham's Small Meats & Preservatives in Lismore NSW: what soppressa is, how salt preserves meat, what small meats are, and our community work."
+  activeRoute="news"
+>
+  <main>
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 32px;">
+      <Container>
+        <Eyebrow>News &amp; Notes</Eyebrow>
+        <h1 class="news-title">From The Curing House</h1>
+        <p class="news-lede">Notes on what we make and how we make it, and what we are up to in the community.</p>
+      </Container>
+    </Section>
+    <Section bg="bone" style="padding-top: 48px; padding-bottom: 96px;">
+      <Container>
+        <div class="news-list">
+          {NEWS.map(p => (
+            <article class="news-row">
+              <div class="news-meta">{p.kicker} · <time datetime={p.date}>{p.label}</time></div>
+              <h2 class="news-row-title"><a href={`/news/${p.slug}/`}>{p.title}</a></h2>
+              <p class="news-row-desc">{p.description}</p>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .news-title { font-family: var(--font-display); font-weight: 900; font-size: 88px; line-height: 0.96; text-transform: uppercase; color: var(--chams-blue-ink); margin: 16px 0 20px; letter-spacing: -0.005em; }
+  .news-lede { font-size: 19px; line-height: 1.5; color: var(--chams-stone); max-width: 720px; }
+  .news-list { max-width: 820px; }
+  .news-row { border-top: 2px solid var(--chams-tan); padding: 26px 0; }
+  .news-meta { font-family: var(--font-subhead); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--chams-red); margin-bottom: 8px; }
+  .news-row-title { font-family: var(--font-display); font-weight: 900; font-size: 32px; line-height: 1.05; text-transform: uppercase; margin: 0 0 8px; }
+  .news-row-title a { color: var(--chams-blue-ink); text-decoration: none; }
+  .news-row-title a:hover { color: var(--chams-red); }
+  .news-row-desc { color: var(--chams-stone); line-height: 1.55; margin: 0; }
+  @media (max-width: 720px) { .news-title { font-size: 54px; } .news-row-title { font-size: 26px; } }
+</style>

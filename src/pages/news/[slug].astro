@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import InlineLink from '../../components/InlineLink.astro';
+import { NEWS } from '../../news.js';
+import { PRODUCTS } from '../../products.js';
+
+export function getStaticPaths() {
+  return NEWS.map(p => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const related = post.products.map(s => PRODUCTS.find(p => p.slug === s)).filter(Boolean);
+const url = `https://www.chams.com.au/news/${post.slug}/`;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.description,
+  "datePublished": post.date,
+  "mainEntityOfPage": url,
+  "image": "https://www.chams.com.au/assets/og/default.png",
+  "author": { "@type": "Organization", "name": "Cham's Small Meats & Preservatives", "url": "https://www.chams.com.au/" },
+  "publisher": { "@type": "Organization", "name": "Cham's Small Meats & Preservatives", "url": "https://www.chams.com.au/" },
+};
+---
+<Base title={post.seoTitle} description={post.description} activeRoute="news">
+<script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <main>
+    <Section bg="cream" style="padding-top: 56px; padding-bottom: 32px;">
+      <Container>
+        <div class="post-wrap">
+          <Eyebrow>{post.kicker}</Eyebrow>
+          <h1 class="post-title">{post.title}</h1>
+          <p class="post-date"><time datetime={post.date}>{post.label}</time></p>
+        </div>
+      </Container>
+    </Section>
+    <Section bg="bone" style="padding-top: 48px; padding-bottom: 96px;">
+      <Container>
+        <div class="post-wrap post-body" set:html={post.html} />
+        {related.length > 0 && (
+          <div class="post-wrap post-related">
+            <Eyebrow>From The Range</Eyebrow>
+            <ul>
+              {related.map(p => <li><a href={`/products/${p.slug}/`}>{p.name}</a></li>)}
+            </ul>
+          </div>
+        )}
+        <div class="post-wrap post-back">
+          <InlineLink href="/news/">All news &amp; notes →</InlineLink>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .post-wrap { max-width: 760px; }
+  .post-title { font-family: var(--font-display); font-weight: 900; font-size: 64px; line-height: 1; text-transform: uppercase; color: var(--chams-blue-ink); margin: 16px 0 14px; letter-spacing: -0.005em; }
+  .post-date { color: var(--chams-grain); font-size: 14px; margin: 0; }
+  .post-body :global(p), .post-body :global(li) { font-size: 18px; line-height: 1.62; color: var(--chams-charcoal); }
+  .post-body :global(p) { margin: 0 0 18px; }
+  .post-body :global(ul) { padding-left: 22px; margin: 0 0 18px; }
+  .post-body :global(li) { margin-bottom: 10px; }
+  .post-body :global(h2) { font-family: var(--font-display); font-weight: 900; font-size: 30px; line-height: 1.08; text-transform: uppercase; color: var(--chams-blue-ink); margin: 34px 0 12px; }
+  .post-body :global(a) { color: var(--chams-red); }
+  .post-body :global(blockquote) { margin: 26px 0; padding: 18px 22px; border-left: 4px solid var(--chams-red); background: var(--chams-cream); font-family: Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--chams-ink); }
+  .post-body :global(cite) { display: block; margin-top: 10px; font-family: var(--font-subhead); font-style: normal; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--chams-stone); }
+  .post-related { margin-top: 36px; }
+  .post-related ul { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .post-related a { color: var(--chams-blue); font-weight: 600; }
+  .post-back { margin-top: 32px; }
+  @media (max-width: 720px) { .post-title { font-size: 42px; } }
+</style>

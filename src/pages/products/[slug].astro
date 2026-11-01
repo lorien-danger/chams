@@ -11,6 +11,7 @@ import ImageBlock from '../../components/ImageBlock.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Badge from '../../components/Badge.astro';
 import { PRODUCTS } from '../../products.js';
+import { NEWS } from '../../news.js';
 
 export function getStaticPaths() {
   return PRODUCTS.map(p => ({
@@ -21,6 +22,7 @@ export function getStaticPaths() {
 
 const { product } = Astro.props;
 const related = PRODUCTS.filter(p => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
+const articles = NEWS.filter(p => p.products.includes(product.slug));
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -66,6 +68,7 @@ const productSchema = {
               <span class="detail-batch">Batch &middot; {product.batch}</span>
             </div>
             <p class="detail-desc">{product.description}</p>
+            {articles.map(a => <p class="detail-article"><InlineLink href={`/news/${a.slug}/`}>{a.title} →</InlineLink></p>)}
 
             <div class="detail-rows">
               <div class="detail-row">
