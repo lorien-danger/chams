@@ -88,7 +88,7 @@ export const NEWS = [
     products: ["cacciatore"],
     html: `<p>We received this by email from a customer in Kyogle and she has agreed to let us answer it here.</p>
 <blockquote>Hello, I bought a pack of your little salamis at the shop in town and they were very good. Could you tell me how you say the name on the packet, and what they are meant to be eaten with? I have only been guessing. Regards, Bev, Kyogle.</blockquote>
-<p>Thank you, Bev. It is said ca-cha-TOR-ay. It is the Italian word for hunter.</p>
+<p>Thank you, Bev. It is said ca-cha-TOR-ay, and it is the Italian word for hunter.</p>
 <p>Cacciatore is a small, firm salami, traditionally made small enough to carry on a day out hunting. A small salami dries faster than a large one, so it tends to be dense and concentrated in flavour. Ours has a fine grind and a peppery finish, and is hand-tied, individually cured and sold in packs of four. It has nothing to do with chicken cacciatore, the tomato stew, beyond the name, and unlike chorizo, which is Spanish and gets its colour and flavour from paprika, it is usually seasoned with pepper and garlic. It can be sliced with bread and cheese, diced through pasta, put on a pizza, or eaten in pieces.</p>`,
   },
   {
