@@ -1,6 +1,6 @@
 // News & notes. Newest first. Each post uses a real-world format (notice, bulletin, trade note, policy, report).
 // Food facts must stay accurate. No home-curing instructions or quantities.
-export const NEWS = [
+const POSTS = [
   {
     slug: "traditional-salami-format-change",
     date: "2026-10-21", label: "21 October 2026", kicker: "Product Notice",
@@ -166,3 +166,5 @@ export const NEWS = [
 <p>These are not meats and are exempt from this policy, including the 20 kg pails. See the <a href="/products/">full range</a>.</p>`,
   },
 ];
+
+export const NEWS = POSTS.slice().sort((a, b) => b.date.localeCompare(a.date));
