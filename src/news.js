@@ -17,6 +17,24 @@ export const NEWS = [
 <p>The proposal has not been approved and no works are scheduled. We make salami. Read more on our <a href="/community/">community page</a>.</p>`,
   },
   {
+    slug: "does-salt-kill-bacteria",
+    date: "2026-10-31", label: "31 October 2026", kicker: "How We Work",
+    title: "Does Salt Kill Bacteria? Water Activity Explained",
+    seoTitle: "Does Salt Kill Bacteria? Water Activity Explained — Cham's",
+    description: "Does salt kill bacteria in meat? Mostly it stops them growing. What water activity means, why dry salami is inhospitable to most bacteria, and what else keeps it safe.",
+    products: ["traditional-salami", "hot-soppressa"],
+    html: `<p>People ask whether salt kills bacteria. The honest answer is that mostly it stops them growing, which for our purposes is just as good.</p>
+<h2>What is water activity?</h2>
+<p>Water activity is a measure of how much of the water in a food is actually available for anything to use. Pure water scores 1.0. Salt and drying both bring the number down, because they lock up or remove the water that bacteria need.</p>
+<h2>How low does it need to go?</h2>
+<p>According to <a href="https://prodtracs.gov.mb.ca/agriculture/food-safety/education-resources/pubs/water-activity-vs-content.pdf">food safety tables from Manitoba Agriculture</a>, most gram-negative bacteria stop growing at around 0.97 and most gram-positive bacteria at around 0.90. <em>Staphylococcus aureus</em>, one of the toughest, stops growing at about 0.86. Cooked beef sits near 0.98. Salami can come in at about 0.82.</p>
+<p>Life does have an absolute limit. <a href="https://doi.org/10.1038/ismej.2014.219">One 2015 study</a> looking for it found that the most salt-loving microbes multiply at about 0.755, and that the toughest fungi can germinate down to around 0.61. We are not aiming for that. It would be a very dry salami.</p>
+<h2>Is it only water activity?</h2>
+<p>No. Salami relies on several things working together: salt, curing agents, acidity from fermentation, and drying over weeks. Fermentation uses friendly cultures, so a salami isn't sterile. It is just a very bad place to be a harmful bacterium. All of this is done to tested recipes, under food safety controls, and it is not something to guess at.</p>
+<blockquote>"My nephew tell me the salt make the salami inhospitable to life. I say thank you."<cite>Cham Bellanova, Founder</cite></blockquote>
+<p>Read more about <a href="/news/why-salt-preserves-meat/">why salt is used to preserve meat</a>. For what salinity does outside the curing house, Dam Kings Beach has <a href="https://damkingsbeach.org/news-salinity-and-life">published a summary of the research</a>.</p>`,
+  },
+  {
     slug: "why-salt-preserves-meat",
     date: "2026-10-27", label: "27 October 2026", kicker: "How We Work",
     title: "Why Is Salt Used to Preserve Meat?",
