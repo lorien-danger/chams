@@ -20,7 +20,7 @@ const POSTS = [
     description: "Cham's Small Meats & Preservatives has supported Dam Kings Beach since 2019 and is founding partner of its salt runoff campaign. A statement from the directors.",
     products: [],
     html: `<p>Cham's Small Meats &amp; Preservatives has supported Dam Kings Beach since 2019, when it began as a community-led waterways initiative, through annual financial support and donations to its seasonal community events. In September 2026 Dam Kings Beach released the <a href="https://damkingsbeach.org/the-proposal">Kings Beach Salt Runoff Containment Proposal</a>, a 6 metre concrete wall between the sand and the sea at Kings Beach, to stop salt reaching the ocean, and the company is founding partner of that campaign.</p>
-<p>Recent commentary has referred to the company's commercial interests in salt. For the record, Cham's buys food-grade salt from a supplier in northern Victoria, has no arrangement with Dam Kings Beach regarding any salt collected at Kings Beach, and would expect any future arrangement to be handled under the Dam Kings Beach <a href="https://damkingsbeach.org/docs/dkb-pol-006-partnerships-and-conflicts-policy.pdf">Partnerships, Sponsorship and Conflicts of Interest Policy</a>. Luca Bellanova, who volunteers as Secretary of Dam Kings Beach, has declared his interest and does not vote on related matters. The <a href="https://stopthedam.org">Stop the Dam group</a> has raised a number of questions with the company and these will be answered directly.</p>
+<p>Cham's buys food-grade salt from a supplier in northern Victoria. It has no arrangement with Dam Kings Beach regarding any salt collected at Kings Beach, and any future arrangement would be handled under the Dam Kings Beach <a href="https://damkingsbeach.org/docs/dkb-pol-006-partnerships-and-conflicts-policy.pdf">Partnerships, Sponsorship and Conflicts of Interest Policy</a>. Luca Bellanova, who volunteers as Secretary of Dam Kings Beach, has declared his interest and does not vote on related matters. The <a href="https://stopthedam.org">Stop the Dam group</a> has raised a number of questions with the company and these will be answered directly.</p>
 <p>Our founder's comment at the time of the announcement remains his position:</p>
 <blockquote>"I don't understand all the science, but my nephew sit me down and explain it, and I think, okay, every day the salt is going in the ocean and nobody is watching. That's not right. We been here forty year. You support the community, the community support you."<cite>Cham Bellanova, Founder</cite></blockquote>
 <p>The proposal has not been approved and no works are scheduled. Deliveries and wholesale accounts are not affected, and media enquiries should be directed to the office.</p>
@@ -33,11 +33,10 @@ const POSTS = [
     seoTitle: "Why Is Salt Used to Preserve Meat? Our 2026 Salt Statement — Cham's",
     description: "Why salt is used to preserve meat, how much salt Cham's uses, where it comes from and where it goes. The company's first annual salt statement.",
     products: ["traditional-salami", "pancetta"],
-    html: `<p>The company has not previously published a salt statement. This one follows a suggestion from Dam Kings Beach that businesses in the region should report where their salt goes.</p>
+    html: `<p>The company has not previously published a salt statement.</p>
 <table>
 <tr><td>Salt purchased, 2025&ndash;26</td><td>186 tonnes</td></tr>
 <tr><td>Source</td><td>Northern Victoria</td></tr>
-<tr><td>Salt sourced from Kings Beach</td><td>Nil</td></tr>
 <tr><td>Salt retained in finished product</td><td>141 tonnes</td></tr>
 <tr><td>Salt to trade waste</td><td>45 tonnes</td></tr>
 </table>
