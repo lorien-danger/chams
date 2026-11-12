@@ -2,6 +2,24 @@
 // Food facts must stay accurate. No home-curing instructions or quantities.
 const POSTS = [
   {
+    slug: "propylparaben-red-3-regulatory-notice",
+    date: "2026-11-10", label: "10 November 2026", kicker: "Notice To Accounts",
+    title: "Regulatory Notice: Propylparaben and Red No. 3",
+    seoTitle: "Regulatory Notice: Propylparaben and Red No. 3 — Cham's",
+    description: "Changes to overseas food law from January 2027 affecting propylparaben and the identification dye in Pink Curing Salt No. 1. A notice to accounts buying from the Preservatives range.",
+    products: ["propylparaben", "sodium-nitrite"],
+    html: `<p>To all accounts purchasing from the Preservatives range. Two changes to overseas food law take effect in January 2027. They concern propylparaben and FD&amp;C Red No. 3, which is the identification dye in our Pink Curing Salt No. 1.</p>
+<table>
+<tr><td>Propylparaben</td><td>European Union</td><td>Not authorised as a food additive since 2006.</td></tr>
+<tr><td>Propylparaben</td><td>California</td><td>Prohibited in food from 1 January 2027 under the <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240AB418">California Food Safety Act</a>.</td></tr>
+<tr><td>FD&amp;C Red No. 3</td><td>United States</td><td>Authorisation for use in food <a href="https://www.fda.gov/industry/color-additives/fdc-red-no-3">revoked by the Food and Drug Administration</a> on 15 January 2025. Food manufacturers have until 15 January 2027 to comply.</td></tr>
+<tr><td>FD&amp;C Red No. 3</td><td>California</td><td>Prohibited in food from 1 January 2027 under the same Act.</td></tr>
+</table>
+<p>The company does not export to the European Union or the United States. Accounts that send finished product to those markets should take their own advice on what the changes mean for them.</p>
+<p>From batch SN-27-01 the identification dye in Pink Curing Salt No. 1 will change, and the colour may be slightly different from earlier batches. The pail, the concentration and the price are not changing. Propylparaben remains available in the 20 kg pail and there is no change to that product.</p>
+<p>Thuy Tran<br>Quality Manager</p>`,
+  },
+  {
     slug: "traditional-salami-format-change",
     date: "2026-10-21", label: "21 October 2026", kicker: "Product Notice",
     title: "Product Notice: Traditional Salami Format Change",

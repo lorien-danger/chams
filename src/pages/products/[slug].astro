@@ -88,6 +88,16 @@ const productSchema = {
                 <div class="detail-value">{product.origin}</div>
               </div>
               <div class="detail-row">
+                <div class="detail-label">Dietary</div>
+                <div class="detail-value">{product.dietary.join(' · ')}</div>
+              </div>
+              {product.ownUse && (
+                <div class="detail-row">
+                  <div class="detail-label">In-House Use</div>
+                  <div class="detail-value">{product.ownUse}</div>
+                </div>
+              )}
+              <div class="detail-row">
                 <div class="detail-label">Available Formats</div>
                 <div class="detail-value">
                   <ul class="formats-list">

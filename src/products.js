@@ -177,3 +177,15 @@ export const PRODUCTS = [
     origin: "Lismore, NSW",
   },
 ];
+
+// Dietary suitability and in-house use, shown on product pages and used by the range filter.
+const DIETARY = {
+  "Salami & Soppressa": ["Gluten free", "Dairy free"],
+  "Cured Cuts": ["Gluten free", "Dairy free"],
+  "Preserved Goods": ["Vegetarian", "Vegan", "Gluten free", "Dairy free"],
+  "Preservatives": ["Vegetarian", "Vegan", "Gluten free", "Dairy free"],
+};
+for (const p of PRODUCTS) {
+  p.dietary = DIETARY[p.cat];
+  if (p.cat === "Preservatives") p.ownUse = "Not used in Cham's own products.";
+}

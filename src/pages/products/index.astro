@@ -9,6 +9,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import { PRODUCTS } from '../../products.js';
 
 const cats = ['All', 'Salami & Soppressa', 'Cured Cuts', 'Preserved Goods', 'Preservatives'];
+const diets = ['Any', 'Vegetarian', 'Vegan', 'Gluten free', 'Dairy free'];
 ---
 <Base
   title="Small Meats, Salami & Preservatives — Cham's, Lismore NSW"
@@ -38,6 +39,14 @@ const cats = ['All', 'Salami & Soppressa', 'Cured Cuts', 'Preserved Goods', 'Pre
           <div style="flex: 1;"></div>
           <span class="product-count" id="product-count">{PRODUCTS.length} products</span>
         </div>
+        <div class="filter-bar filter-bar-diet">
+          <span class="filter-label">Dietary</span>
+          {diets.map(d => (
+            <button class:list={['diet-btn', 'filter-btn', { active: d === 'Any' }]} data-diet={d}>
+              {d}
+            </button>
+          ))}
+        </div>
       </Container>
     </Section>
 
@@ -45,7 +54,7 @@ const cats = ['All', 'Salami & Soppressa', 'Cured Cuts', 'Preserved Goods', 'Pre
       <Container>
         <div class="product-grid" id="product-grid">
           {PRODUCTS.map(p => (
-            <div data-cat={p.cat}>
+            <div data-cat={p.cat} data-diet={p.dietary.join("|")}>
               <ProductCard name={p.name} sub={p.sub} weight={p.weight} tone="product" batch={p.batch} image={p.image} href={`/products/${p.slug}/`} />
             </div>
           ))}
@@ -68,29 +77,52 @@ const cats = ['All', 'Salami & Soppressa', 'Cured Cuts', 'Preserved Goods', 'Pre
 </Base>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
+  const catButtons = document.querySelectorAll('.filter-btn[data-filter]');
+  const dietButtons = document.querySelectorAll('.filter-btn[data-diet]');
   const items = document.querySelectorAll('#product-grid > [data-cat]');
   const countEl = document.getElementById('product-count');
+  let cat = 'All';
+  let diet = 'Any';
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      let count = 0;
-      items.forEach(item => {
-        const cat = item.getAttribute('data-cat');
-        const show = filter === 'All' || cat === filter;
-        (item as HTMLElement).style.display = show ? '' : 'none';
-        if (show) count++;
-      });
-      if (countEl) countEl.textContent = `${count} products`;
+  function apply() {
+    let count = 0;
+    items.forEach(item => {
+      const okCat = cat === 'All' || item.getAttribute('data-cat') === cat;
+      const okDiet = diet === 'Any' || (item.getAttribute('data-diet') || '').split('|').includes(diet);
+      const show = okCat && okDiet;
+      (item as HTMLElement).style.display = show ? '' : 'none';
+      if (show) count++;
     });
-  });
+    if (countEl) countEl.textContent = `${count} products`;
+  }
+
+  catButtons.forEach(btn => btn.addEventListener('click', () => {
+    cat = btn.getAttribute('data-filter') || 'All';
+    catButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    apply();
+  }));
+  dietButtons.forEach(btn => btn.addEventListener('click', () => {
+    diet = btn.getAttribute('data-diet') || 'Any';
+    dietButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    apply();
+  }));
 </script>
 
+
 <style>
+  .filter-bar.filter-bar-diet { margin-top: 12px; padding-top: 0; border-top: 0; }
+  .filter-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chams-stone);
+    align-self: center;
+    margin-right: 8px;
+  }
   .products-intro {
     display: grid;
     grid-template-columns: 1.05fr 1fr;
