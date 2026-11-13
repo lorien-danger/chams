@@ -2,6 +2,15 @@
 // Food facts must stay accurate. No home-curing instructions or quantities.
 const POSTS = [
   {
+    slug: "office-hours-4-december-2026",
+    date: "2026-11-12", label: "12 November 2026", kicker: "Notice To Accounts",
+    title: "Office Hours: Friday 4 December",
+    seoTitle: "Office Hours: Friday 4 December — Cham's",
+    description: "The office will be unattended between 10 and 11 am on Friday 4 December. Deliveries are not affected.",
+    products: [],
+    html: `<p>The office will be unattended between 10 and 11 am on Friday 4 December for a staff morning tea held for <a href="https://damkingsbeach.org/salt-runoff-awareness-week">Salt Runoff Awareness Week</a>. Phone orders received during that hour will be returned before midday. Deliveries and the production floor are not affected.</p>`,
+  },
+  {
     slug: "propylparaben-red-3-regulatory-notice",
     date: "2026-11-10", label: "10 November 2026", kicker: "Notice To Accounts",
     title: "Regulatory Notice: Propylparaben and Red No. 3",
